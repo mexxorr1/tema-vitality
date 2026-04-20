@@ -1,33 +1,141 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "hero": {
       "type": "hero-banner",
       "settings": {
+        "social_proof_text": "+15,400 costas aliviadas",
+        "heading": "Acorde sem dor.\nCorrija sua postura.",
+        "subheading": "<p>El corrector inteligente que entrena tu espalda, alivia la tensión cervical en 14 días y es 100% invisible sob sua roupa.</p>",
+        "button_text": "Obter 33% de Desconto",
+        "button_link": "",
+        "delivery_text": "Pagamento na entrega disponível"
       }
     },
     "best_sellers": {
       "type": "best-sellers",
       "settings": {
+        "heading": "Os mais vendidos",
+        "collection": "mas-vendidos",
+        "products_to_show": 4
       }
     },
     "features": {
       "type": "features-accordion",
+      "blocks": {
+        "feature_cpFTrp": {
+          "type": "feature",
+          "settings": {
+            "title": "Benefício da funcionalidade",
+            "text": "<p>Descrição completa do que esse recurso faz.</p>"
+          }
+        },
+        "feature_EbkKyE": {
+          "type": "feature",
+          "settings": {
+            "title": "Benefício da funcionalidade",
+            "text": "<p>Descrição completa do que esse recurso faz.</p>"
+          }
+        },
+        "feature_FDVWgz": {
+          "type": "feature",
+          "settings": {
+            "title": "Benefício da funcionalidade",
+            "text": "<p>Descrição completa do que esse recurso faz.</p>"
+          }
+        },
+        "feature_myw7kf": {
+          "type": "feature",
+          "settings": {
+            "title": "Benefício da funcionalidade",
+            "text": "<p>Descrição completa do que esse recurso faz.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "feature_cpFTrp",
+        "feature_EbkKyE",
+        "feature_FDVWgz",
+        "feature_myw7kf"
+      ],
       "settings": {
+        "image": "shopify://shop_images/Crie_uma_imagem_202604181502.jpg",
+        "heading": "Alinhe sua coluna e elimine o cansaço para umas \n costas saudáveis"
       }
     },
     "testimonials": {
       "type": "testimonials-carousel",
+      "blocks": {
+        "review_7DU7tW": {
+          "type": "review",
+          "settings": {
+            "review_text": "Review maravilhoso sobre o produto.",
+            "rating": 5,
+            "author": "Nome C.",
+            "product_mentioned": "Corretor de Postura"
+          }
+        },
+        "review_NKHAjC": {
+          "type": "review",
+          "settings": {
+            "review_text": "Review maravilhoso sobre o produto.",
+            "rating": 5,
+            "author": "Nome C.",
+            "product_mentioned": "Corretor de Postura"
+          }
+        },
+        "review_X8JaD9": {
+          "type": "review",
+          "settings": {
+            "review_text": "Review maravilhoso sobre o produto.",
+            "rating": 5,
+            "author": "Nome C.",
+            "product_mentioned": "Corretor de Postura"
+          }
+        },
+        "review_ViU7jL": {
+          "type": "review",
+          "settings": {
+            "review_text": "Review maravilhoso sobre o produto.",
+            "rating": 5,
+            "author": "Nome C.",
+            "product_mentioned": "Corretor de Postura"
+          }
+        }
+      },
+      "block_order": [
+        "review_7DU7tW",
+        "review_NKHAjC",
+        "review_X8JaD9",
+        "review_ViU7jL"
+      ],
       "settings": {
+        "heading": "Resultados Reais dos Nossos Clientes"
       }
     },
     "bundle": {
       "type": "bundle-pricing",
       "settings": {
+        "heading": "Escolha seu Pacote Ideal",
+        "subheading": "Aproveite nossos descontos por volume. As ofertas desta página expiram em breve."
       }
     },
     "cta": {
       "type": "cta-banner",
       "settings": {
+        "heading": "Experimente hoje, sinta-se melhor amanhã.",
+        "text": "<p>Junte-se a milhares de pessoas que já transformaram suas vidas com uma postura corrigida e livre de dores.</p>",
+        "button_text": "Melhorar minha postura agora",
+        "button_link": "",
+        "guarantee_text": "Garantia incondicional de 30 dias."
       }
     }
   },
