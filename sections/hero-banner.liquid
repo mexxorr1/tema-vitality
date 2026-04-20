@@ -1,13 +1,17 @@
 <section class="relative pt-36 pb-20 md:pt-48 md:pb-40 overflow-hidden flex flex-col justify-center text-left px-6 md:px-12 xl:px-24 min-h-[90vh]">
   {%- if section.settings.video != blank -%}
     {{ section.settings.video | video_tag: autoplay: true, loop: true, muted: true, controls: false, class: 'absolute inset-0 w-full h-full object-cover z-0 pointer-events-none' }}
+  {%- elsif section.settings.video_url != blank -%}
+    <video autoplay loop muted playsinline
+           class="absolute inset-0 w-full h-full object-cover z-0 pointer-events-none">
+      <source src="{{ section.settings.video_url }}" type="video/mp4">
+    </video>
   {%- elsif section.settings.image != blank -%}
     {{
       section.settings.image | image_url: width: 1920 | image_tag: 
         class: 'absolute inset-0 w-full h-full object-cover z-0 pointer-events-none'
     }}
   {%- else -%}
-    <!-- Fallback if neither video nor image is provided -->
     <div class="absolute inset-0 w-full h-full object-cover z-0 bg-muted"></div>
   {%- endif -%}
   
@@ -26,33 +30,33 @@
       </div>
     {%- endif -%}
 
-    {%- if section.settings.heading != blank -%}
-      <h1 class="text-5xl sm:text-6xl md:text-[5.5rem] tracking-tight leading-[1.05] font-bold mb-6 text-foreground drop-shadow-sm">
-        {{ section.settings.heading | newline_to_br | replace: 'dor', '<span class="text-primary underline decoration-primary/30">dor.</span>' }}
-      </h1>
-    {%- endif -%}
+    <h1 class="text-5xl sm:text-6xl md:text-[5.5rem] tracking-tight leading-[1.05] font-medium mb-6 text-foreground drop-shadow-sm">
+      Acorde sem <span class="text-primary italic">dor.</span><br/>
+      Corrija sua postura.
+    </h1>
 
-    {%- if section.settings.subheading != blank -%}
-      <p class="text-lg md:text-xl text-foreground/80 max-w-md mb-10 font-sans">
-        {{ section.settings.subheading }}
-      </p>
-    {%- endif -%}
+    <p class="text-lg md:text-xl text-foreground/80 max-w-md mb-10 font-sans">
+      El corrector inteligente que entrena tu espalda, alivia la tensión cervical en 14 días y es
+      <strong class="font-semibold text-foreground">100% invisible</strong> sob sua roupa.
+    </p>
 
-    {%- if section.settings.button_text != blank and section.settings.button_link != blank -%}
-      <div class="flex flex-col sm:flex-row items-center gap-4">
-        <a href="{{ section.settings.button_link }}" class="pulse-button bg-primary text-primary-foreground px-10 py-5 rounded-full font-extrabold hover:brightness-110 active:scale-95 transition-all shadow-2xl hover:shadow-primary/40 flex items-center justify-center gap-3 w-full sm:w-fit text-lg">
-          {{ section.settings.button_text }}
-          <svg fill="currentColor" viewBox="0 0 24 24" class="w-5 h-5"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
-        </a>
-        <div class="flex items-center gap-2 text-sm font-semibold text-foreground bg-background/80 px-4 py-2 rounded-full border border-border shadow-sm">
-          <span class="relative flex h-3 w-3">
-            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-            <span class="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
-          </span>
-          Estoque Limitado
-        </div>
+    <div class="flex flex-col sm:flex-row items-center gap-4">
+      <a href="#los-mas-vendidos"
+         onclick="document.getElementById('los-mas-vendidos').scrollIntoView({behavior:'smooth'}); return false;"
+         class="pulse-button bg-primary text-primary-foreground px-10 py-5 rounded-full font-extrabold hover:brightness-110 active:scale-95 transition-all shadow-2xl hover:shadow-primary/40 flex items-center justify-center gap-3 w-full sm:w-fit text-lg">
+        {{ section.settings.cta_text | default: 'Obter 33% de Desconto' }}
+        <svg fill="currentColor" viewBox="0 0 24 24" class="w-5 h-5">
+          <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/>
+        </svg>
+      </a>
+      <div class="flex items-center gap-2 text-sm font-semibold text-foreground bg-background/80 px-4 py-2 rounded-full border border-border shadow-sm">
+        <span class="relative flex h-3 w-3">
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+          <span class="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+        </span>
+        Estoque Limitado
       </div>
-    {%- endif -%}
+    </div>
 
     {%- if section.settings.delivery_text != blank -%}
       <p class="text-sm font-medium text-foreground/60 mt-4 flex items-center gap-2">
@@ -70,7 +74,13 @@
     {
       "type": "video",
       "id": "video",
-      "label": "Background Video"
+      "label": "Background Video (Shopify hosted)"
+    },
+    {
+      "type": "text",
+      "id": "video_url",
+      "label": "URL do vídeo de fundo (mp4)",
+      "default": ""
     },
     {
       "type": "image_picker",
@@ -84,27 +94,10 @@
       "default": "+15,400 costas aliviadas"
     },
     {
-      "type": "textarea",
-      "id": "heading",
-      "label": "Heading",
-      "default": "Acorde sem dor.\nCorrija sua postura."
-    },
-    {
-      "type": "richtext",
-      "id": "subheading",
-      "label": "Subheading",
-      "default": "<p>El corrector inteligente que entrena tu espalda, alivia la tensión cervical en 14 días y es 100% invisible sob sua roupa.</p>"
-    },
-    {
       "type": "text",
-      "id": "button_text",
-      "label": "Button Text",
+      "id": "cta_text",
+      "label": "CTA Button Text",
       "default": "Obter 33% de Desconto"
-    },
-    {
-      "type": "url",
-      "id": "button_link",
-      "label": "Button Link"
     },
     {
       "type": "text",

@@ -1,58 +1,88 @@
-<footer class="bg-card border-t border-border/60 py-20">
-  <div class="w-full mx-auto px-6 md:px-12 xl:px-24">
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 lg:gap-8 mb-16">
-      
-      <div class="lg:col-span-2">
-        <a href="{{ routes.root_url }}" class="font-serif font-bold text-3xl tracking-tight text-foreground block mb-6">
-          {%- if section.settings.logo != blank -%}
-            {{ section.settings.logo | image_url: width: 250 | image_tag: class: 'h-8 w-auto mix-blend-multiply', alt: shop.name }}
-          {%- else -%}
-            {{ shop.name }}
-          {%- endif -%}
-        </a>
-        <p class="text-muted-foreground font-sans text-sm max-w-sm mb-8 leading-relaxed">
-          {{ section.settings.description | default: 'Soluções inteligentes para dor cervical e postura, desenhadas com tecnologia premium para o uso diário.' }}
-        </p>
-        
-        <div class="flex gap-4">
-          {%- if settings.social_instagram_link != blank -%}
-          <a href="{{ settings.social_instagram_link }}" class="w-10 h-10 rounded-full bg-muted/50 flex items-center justify-center text-foreground hover:bg-primary hover:text-primary-foreground transition-all">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
-          </a>
-          {%- endif -%}
-          {%- if settings.social_facebook_link != blank -%}
-          <a href="{{ settings.social_facebook_link }}" class="w-10 h-10 rounded-full bg-muted/50 flex items-center justify-center text-foreground hover:bg-primary hover:text-primary-foreground transition-all">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
-          </a>
-          {%- endif -%}
-        </div>
-      </div>
+<footer class="bg-foreground w-full relative pt-20 overflow-hidden">
+  <!-- Linha decorativa topo -->
+  <div class="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-primary/50 to-transparent"></div>
+  <div class="absolute -top-40 -right-40 w-96 h-96 bg-primary/20 rounded-full blur-[120px] pointer-events-none"></div>
 
-      {%- for block in section.blocks -%}
-        {%- if block.type == 'link_list' -%}
-          <div>
-            <h4 class="font-semibold text-foreground mb-6">{{ block.settings.title }}</h4>
-            <ul class="flex flex-col gap-4 text-sm font-sans text-muted-foreground">
-              {%- for link in block.settings.menu.links -%}
-                <li><a href="{{ link.url }}" class="hover:text-primary transition-colors flex items-center gap-2 group"><svg class="w-3 h-3 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg> {{ link.title }}</a></li>
-              {%- endfor -%}
-            </ul>
-          </div>
-        {%- endif -%}
-      {%- endfor -%}
+  <!-- Grid Principal -->
+  <div class="w-full mx-auto px-6 md:px-12 xl:px-24 grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8 relative z-10">
 
-      <div class="lg:col-span-1">
-        <h4 class="font-semibold text-foreground mb-6">Fique Conectado</h4>
-        <form class="flex flex-col gap-3">
-          <input type="email" placeholder="Seu melhor e-mail" class="bg-background border border-border/80 px-5 py-3.5 rounded-xl text-sm w-full focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all font-sans text-foreground">
-          <button type="button" class="bg-foreground text-background px-5 py-3.5 rounded-xl text-sm font-semibold hover:bg-primary hover:text-primary-foreground transition-all w-full">Assinar News</button>
+    <!-- Newsletter & Brand -->
+    <div class="md:col-span-5 flex flex-col gap-6">
+      <a href="{{ routes.root_url }}" class="font-serif font-bold text-3xl tracking-tight text-background block">
+        <img src="{{ 'imgi_4_with_padding_1.png' | file_url }}" alt="{{ shop.name }}" class="h-10 brightness-0 invert" />
+      </a>
+      <p class="text-background/80 font-sans max-w-sm text-sm lg:text-base leading-relaxed">
+        {{ section.settings.description | default: 'Descubra o alívio definitivo e transforme sua postura. Desenhado por especialistas para se integrar à sua rotina diária com elegância e conforto.' }}
+      </p>
+
+      <!-- Newsletter -->
+      <div class="mt-2">
+        <h4 class="text-sm font-semibold mb-3 tracking-wide uppercase text-background/90">Junte-se ao nosso clube</h4>
+        <form class="flex w-full max-w-md relative group" action="/contact#contact_form" method="post">
+          <input type="hidden" name="form_type" value="customer">
+          <input type="hidden" name="utf8" value="✓">
+          <input type="email" name="contact[email]" placeholder="Seu melhor e-mail" required
+            class="w-full bg-white/10 border border-white/20 text-background rounded-full px-6 py-4 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all placeholder:text-background/40">
+          <button type="submit"
+            class="absolute right-2 top-2 bottom-2 bg-primary hover:bg-primary/90 text-primary-foreground font-medium rounded-full px-6 transition-all shadow-md active:scale-95">
+            Assinar
+          </button>
         </form>
       </div>
-      
+
+      <!-- Redes Sociais -->
+      <div class="mt-8 flex flex-col gap-4">
+        <h4 class="text-xs font-bold tracking-widest text-background/60">SIGA-NOS</h4>
+        <div class="flex items-center gap-6 text-white">
+          <a href="#" aria-label="Instagram" class="hover:text-primary transition-all hover:scale-110 hover:-translate-y-1 transform duration-300">
+            <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+            </svg>
+          </a>
+          <a href="#" aria-label="TikTok" class="hover:text-primary transition-all hover:scale-110 hover:-translate-y-1 transform duration-300">
+            <svg fill="currentColor" class="w-7 h-7" viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 15.68a6.34 6.34 0 0 0 6.27 6.36 6.34 6.34 0 0 0 6.25-6.36V8.05a8.36 8.36 0 0 0 4.39 1.44V6.02a4.83 4.83 0 0 1-2.32-.48V6.69z"/></svg>
+          </a>
+          <a href="#" aria-label="Facebook" class="hover:text-primary transition-all hover:scale-110 hover:-translate-y-1 transform duration-300">
+            <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
     </div>
 
-    <div class="pt-8 border-t border-border/50 flex flex-col md:flex-row items-center justify-between gap-4 text-sm font-sans text-muted-foreground">
-      <p>&copy; {{ 'now' | date: '%Y' }} {{ shop.name }}. Direitos reservados.</p>
+    <!-- Spacer Desktop -->
+    <div class="hidden lg:block lg:col-span-1"></div>
+
+    <!-- Links -->
+    <div class="md:col-span-7 lg:col-span-6 grid grid-cols-2 gap-8">
+      <div class="flex flex-col gap-4">
+        <h4 class="text-sm font-bold tracking-widest uppercase text-primary">Suporte</h4>
+        <a href="#" class="text-background/70 hover:text-primary hover:translate-x-1 transition-all text-sm w-fit">Centro de Ajuda</a>
+        <a href="#" class="text-background/70 hover:text-primary hover:translate-x-1 transition-all text-sm w-fit">Rastrear Pedido</a>
+        <a href="{{ routes.root_url }}pages/contact" class="text-background/70 hover:text-primary hover:translate-x-1 transition-all text-sm w-fit">Contato</a>
+      </div>
+      <div class="flex flex-col gap-4">
+        <h4 class="text-sm font-bold tracking-widest uppercase text-primary">Legal</h4>
+        <a href="{{ routes.root_url }}policies/privacy-policy" class="text-background/70 hover:text-primary hover:translate-x-1 transition-all text-sm w-fit">Política de Privacidade</a>
+        <a href="{{ routes.root_url }}policies/terms-of-service" class="text-background/70 hover:text-primary hover:translate-x-1 transition-all text-sm w-fit">Termos de Serviço</a>
+        <a href="{{ routes.root_url }}policies/refund-policy" class="text-background/70 hover:text-primary hover:translate-x-1 transition-all text-sm w-fit">Política de Reembolso</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tipografia Marca Gigante -->
+  <div class="w-full flex justify-center items-center mt-12 md:mt-24 pointer-events-none select-none relative z-0">
+    <h2 class="text-[18vw] lg:text-[14vw] font-serif font-black uppercase leading-none tracking-tighter text-background/5">VITALITY</h2>
+  </div>
+
+  <!-- Barra Inferior -->
+  <div class="w-full mx-auto px-6 md:px-12 xl:px-24 mt-4 md:mt-12 flex flex-col md:flex-row items-center justify-between border-t border-white/10 pt-8 gap-6 md:gap-4 relative z-10">
+    <p class="text-xs text-background/50 text-center md:text-left">&copy; {{ 'now' | date: '%Y' }} Vitality Stores. Todos os direitos reservados.</p>
+    <div class="flex items-center w-full md:w-auto mt-4 md:mt-0 justify-center md:justify-end">
+      <img src="{{ 'bandeiras.png' | file_url }}" alt="Formas de pagamento seguras" class="h-10 md:h-12 lg:h-14 object-contain">
     </div>
   </div>
 </footer>
@@ -62,33 +92,10 @@
   "name": "Footer",
   "settings": [
     {
-      "type": "image_picker",
-      "id": "logo",
-      "label": "Logo Image"
-    },
-    {
       "type": "textarea",
       "id": "description",
-      "label": "Store Description"
-    }
-  ],
-  "blocks": [
-    {
-      "type": "link_list",
-      "name": "Menu",
-      "settings": [
-        {
-          "type": "text",
-          "id": "title",
-          "label": "Heading",
-          "default": "Links"
-        },
-        {
-          "type": "link_list",
-          "id": "menu",
-          "label": "Menu"
-        }
-      ]
+      "label": "Store Description",
+      "default": "Descubra o alívio definitivo e transforme sua postura. Desenhado por especialistas para se integrar à sua rotina diária com elegância e conforto."
     }
   ],
   "presets": [

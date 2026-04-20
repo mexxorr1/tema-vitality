@@ -26,13 +26,15 @@
         <div class="flex flex-col mb-6">
           {%- if product != blank and product.compare_at_price > product.price -%}
             <span class="text-muted-foreground line-through text-lg font-sans">{{ product.compare_at_price | money }}</span>
+          {%- elsif block.settings.compare_price != blank -%}
+            <span class="text-muted-foreground line-through text-lg font-sans">{{ block.settings.compare_price }}</span>
           {%- endif -%}
           
           <span class="{% if block.settings.is_highlighted %}text-5xl text-primary{% else %}text-4xl text-foreground{% endif %} font-semibold">
             {%- if product != blank -%}
               {{ product.price | money }}
             {%- else -%}
-              $39.00
+              {{ block.settings.fallback_price | default: '$39.00' }}
             {%- endif -%}
             <span class="text-base text-muted-foreground font-normal">{{ block.settings.price_suffix }}</span>
           </span>
@@ -47,8 +49,12 @@
               </li>
             {%- endif -%}
             {%- if block.settings.feature_2 != blank -%}
-              <li class="flex items-center gap-3 {% if block.settings.is_highlighted %}font-medium text-primary{% endif %}">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-primary shrink-0"><path d="M20 6L9 17l-5-5"/></svg>
+              <li class="flex items-center gap-3 {% if block.settings.is_highlighted %}font-medium text-primary{% endif %} {% if block.settings.feature_2_disabled %}opacity-40{% endif %}">
+                {%- if block.settings.feature_2_disabled -%}
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="shrink-0"><path d="M18 6L6 18M6 6l12 12"/></svg>
+                {%- else -%}
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-primary shrink-0"><path d="M20 6L9 17l-5-5"/></svg>
+                {%- endif -%}
                 {{ block.settings.feature_2 }}
               </li>
             {%- endif -%}
@@ -135,6 +141,18 @@
         },
         {
           "type": "text",
+          "id": "compare_price",
+          "label": "Compare at Price (fallback)",
+          "info": "Ex: $59.00 USD"
+        },
+        {
+          "type": "text",
+          "id": "fallback_price",
+          "label": "Fallback Price",
+          "default": "$39.00"
+        },
+        {
+          "type": "text",
           "id": "price_suffix",
           "label": "Price Suffix",
           "default": "/unidade"
@@ -150,6 +168,12 @@
           "label": "Feature 2"
         },
         {
+          "type": "checkbox",
+          "id": "feature_2_disabled",
+          "label": "Feature 2 disabled (strikethrough)?",
+          "default": false
+        },
+        {
           "type": "text",
           "id": "button_text",
           "label": "Button Text",
@@ -162,9 +186,48 @@
     {
       "name": "Bundle Pricing",
       "blocks": [
-        {"type": "pricing_tier"},
-        {"type": "pricing_tier", "settings": {"is_highlighted": true}},
-        {"type": "pricing_tier"}
+        {
+          "type": "pricing_tier",
+          "settings": {
+            "title": "Pacote Básico",
+            "description": "Perfeito para começar a melhorar sua postura.",
+            "compare_price": "$59.00 USD",
+            "fallback_price": "$39.00",
+            "price_suffix": "/unidade",
+            "feature_1": "1 Corretor Inteligente",
+            "feature_2": "Frete Grátis",
+            "feature_2_disabled": true,
+            "button_text": "Selecionar Plano"
+          }
+        },
+        {
+          "type": "pricing_tier",
+          "settings": {
+            "is_highlighted": true,
+            "badge_text": "Mais Vendido - Economize 30%",
+            "title": "Pacote Casal",
+            "description": "Ideal para compartilhar com parceiro ou familiar.",
+            "compare_price": "$118.00 USD",
+            "fallback_price": "$69.00",
+            "price_suffix": "/no total",
+            "feature_1": "2 Corretores Inteligentes",
+            "feature_2": "Frete Expresso Grátis",
+            "button_text": "Comprar Agora"
+          }
+        },
+        {
+          "type": "pricing_tier",
+          "settings": {
+            "title": "Pacote Família",
+            "description": "Equipe todos em casa e maximize sua economia.",
+            "compare_price": "$177.00 USD",
+            "fallback_price": "$89.00",
+            "price_suffix": "/no total",
+            "feature_1": "3 Corretores Inteligentes",
+            "feature_2": "Frete Expresso Grátis",
+            "button_text": "Selecionar Plano"
+          }
+        }
       ]
     }
   ]
