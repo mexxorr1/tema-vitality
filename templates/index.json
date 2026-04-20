@@ -1,0 +1,42 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero-banner",
+      "settings": {
+      }
+    },
+    "best_sellers": {
+      "type": "best-sellers",
+      "settings": {
+      }
+    },
+    "features": {
+      "type": "features-accordion",
+      "settings": {
+      }
+    },
+    "testimonials": {
+      "type": "testimonials-carousel",
+      "settings": {
+      }
+    },
+    "bundle": {
+      "type": "bundle-pricing",
+      "settings": {
+      }
+    },
+    "cta": {
+      "type": "cta-banner",
+      "settings": {
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "best_sellers",
+    "features",
+    "testimonials",
+    "bundle",
+    "cta"
+  ]
+}

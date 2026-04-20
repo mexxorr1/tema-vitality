@@ -1,0 +1,100 @@
+<footer class="bg-card border-t border-border/60 py-20">
+  <div class="w-full mx-auto px-6 md:px-12 xl:px-24">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 lg:gap-8 mb-16">
+      
+      <div class="lg:col-span-2">
+        <a href="{{ routes.root_url }}" class="font-serif font-bold text-3xl tracking-tight text-foreground block mb-6">
+          {%- if section.settings.logo != blank -%}
+            {{ section.settings.logo | image_url: width: 250 | image_tag: class: 'h-8 w-auto mix-blend-multiply', alt: shop.name }}
+          {%- else -%}
+            {{ shop.name }}
+          {%- endif -%}
+        </a>
+        <p class="text-muted-foreground font-sans text-sm max-w-sm mb-8 leading-relaxed">
+          {{ section.settings.description | default: 'Soluções inteligentes para dor cervical e postura, desenhadas com tecnologia premium para o uso diário.' }}
+        </p>
+        
+        <div class="flex gap-4">
+          {%- if settings.social_instagram_link != blank -%}
+          <a href="{{ settings.social_instagram_link }}" class="w-10 h-10 rounded-full bg-muted/50 flex items-center justify-center text-foreground hover:bg-primary hover:text-primary-foreground transition-all">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+          </a>
+          {%- endif -%}
+          {%- if settings.social_facebook_link != blank -%}
+          <a href="{{ settings.social_facebook_link }}" class="w-10 h-10 rounded-full bg-muted/50 flex items-center justify-center text-foreground hover:bg-primary hover:text-primary-foreground transition-all">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+          </a>
+          {%- endif -%}
+        </div>
+      </div>
+
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'link_list' -%}
+          <div>
+            <h4 class="font-semibold text-foreground mb-6">{{ block.settings.title }}</h4>
+            <ul class="flex flex-col gap-4 text-sm font-sans text-muted-foreground">
+              {%- for link in block.settings.menu.links -%}
+                <li><a href="{{ link.url }}" class="hover:text-primary transition-colors flex items-center gap-2 group"><svg class="w-3 h-3 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg> {{ link.title }}</a></li>
+              {%- endfor -%}
+            </ul>
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+
+      <div class="lg:col-span-1">
+        <h4 class="font-semibold text-foreground mb-6">Fique Conectado</h4>
+        <form class="flex flex-col gap-3">
+          <input type="email" placeholder="Seu melhor e-mail" class="bg-background border border-border/80 px-5 py-3.5 rounded-xl text-sm w-full focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all font-sans text-foreground">
+          <button type="button" class="bg-foreground text-background px-5 py-3.5 rounded-xl text-sm font-semibold hover:bg-primary hover:text-primary-foreground transition-all w-full">Assinar News</button>
+        </form>
+      </div>
+      
+    </div>
+
+    <div class="pt-8 border-t border-border/50 flex flex-col md:flex-row items-center justify-between gap-4 text-sm font-sans text-muted-foreground">
+      <p>&copy; {{ 'now' | date: '%Y' }} {{ shop.name }}. Direitos reservados.</p>
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Footer",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo Image"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Store Description"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "link_list",
+      "name": "Menu",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Heading",
+          "default": "Links"
+        },
+        {
+          "type": "link_list",
+          "id": "menu",
+          "label": "Menu"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Footer"
+    }
+  ]
+}
+{% endschema %}

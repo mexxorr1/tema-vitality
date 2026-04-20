@@ -1,0 +1,15 @@
+{
+  "general": {
+    "pagination": {
+      "previous": "Previous",
+      "next": "Next"
+    }
+  },
+  "products": {
+    "product": {
+      "add_to_cart": "Buy now",
+      "sold_out": "Sold out",
+      "on_sale": "Save"
+    }
+  }
+}
