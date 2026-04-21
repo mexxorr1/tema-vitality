@@ -1,0 +1,618 @@
+{% comment %}
+  ╔══════════════════════════════════════════════════════════════════════════════╗
+  ║  RISK REVERSAL — Garantia + FAQ Accordion + Urgência                       ║
+  ║  Seção final de conversão: elimina objeções e cria urgência.               ║
+  ║  100% nativo: CSS custom properties + accordion nativo <details>.          ║
+  ╚══════════════════════════════════════════════════════════════════════════════╝
+{% endcomment %}
+
+<section
+  id="risk-reversal"
+  class="risk-reversal"
+  aria-label="{{ section.settings.heading | default: 'Compre Sem Risco' }}"
+>
+  <div class="container">
+    <div class="rr-grid">
+
+      {%- comment -%} ═══ Coluna da Garantia ═══ {%- endcomment -%}
+      <div class="rr-guarantee">
+        <div class="rr-guarantee__card">
+          {%- comment -%} Selo Circular {%- endcomment -%}
+          <div class="rr-guarantee__seal" aria-hidden="true">
+            <div class="rr-guarantee__ring">
+              <svg viewBox="0 0 120 120" class="rr-guarantee__ring-svg">
+                <circle cx="60" cy="60" r="54" fill="none" stroke="var(--color-primary)" stroke-width="2" stroke-dasharray="5 3" opacity="0.3"/>
+              </svg>
+              <div class="rr-guarantee__ring-inner">
+                <span class="rr-guarantee__days">{{ section.settings.guarantee_days | default: 30 }}</span>
+                <span class="rr-guarantee__days-label">DIAS</span>
+              </div>
+            </div>
+          </div>
+
+          {%- if section.settings.guarantee_eyebrow != blank -%}
+            <span class="rr-guarantee__eyebrow">{{ section.settings.guarantee_eyebrow }}</span>
+          {%- endif -%}
+
+          <h2 class="rr-guarantee__title">{{ section.settings.heading }}</h2>
+
+          {%- if section.settings.guarantee_text != blank -%}
+            <p class="rr-guarantee__text">{{ section.settings.guarantee_text }}</p>
+          {%- endif -%}
+
+          {%- comment -%} Pontos de garantia {%- endcomment -%}
+          <ul class="rr-guarantee__points">
+            {%- assign guarantee_items = section.settings.guarantee_points | split: '|' -%}
+            {%- for item in guarantee_items -%}
+              <li class="rr-guarantee__point">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-success)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                  <polyline points="22 4 12 14.01 9 11.01"/>
+                </svg>
+                <span>{{ item | strip }}</span>
+              </li>
+            {%- endfor -%}
+          </ul>
+
+          {%- comment -%} CTA Principal {%- endcomment -%}
+          <a href="{{ section.settings.cta_url | default: '#los-mas-vendidos' }}"
+             class="btn btn--primary btn--lg rr-guarantee__cta">
+            {{ section.settings.cta_text | default: 'Experimentar Sem Risco' }}
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
+          </a>
+
+          {%- comment -%} Urgência {%- endcomment -%}
+          {%- if section.settings.urgency_show -%}
+            <div class="rr-urgency">
+              <div class="rr-urgency__pulse"></div>
+              <p class="rr-urgency__text">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+                </svg>
+                {{ section.settings.urgency_text | default: 'Oferta encerra em breve — Estoque limitado' }}
+              </p>
+            </div>
+          {%- endif -%}
+
+          {%- comment -%} Métodos de pagamento {%- endcomment -%}
+          {%- if section.settings.show_payment_icons -%}
+            <div class="rr-payments">
+              <p class="rr-payments__label">Pagamento seguro:</p>
+              <div class="rr-payments__icons">
+                {%- comment -%} Visa {%- endcomment -%}
+                <svg width="38" height="24" viewBox="0 0 38 24" fill="none"><rect width="38" height="24" rx="4" fill="#1A1F71"/><path d="M15.3 15.5l1.5-9.2h2.4l-1.5 9.2h-2.4zm10.3-9c-.5-.2-1.2-.4-2.1-.4-2.3 0-3.9 1.2-3.9 3 0 1.3 1.2 2 2.1 2.5.9.5 1.2.8 1.2 1.2 0 .7-.7 1-1.4 1-.9 0-1.4-.1-2.2-.5l-.3-.1-.3 2c.5.2 1.6.5 2.6.5 2.4 0 4-1.2 4-3.1 0-1-.6-1.8-2-2.5-.8-.4-1.3-.7-1.3-1.1 0-.4.4-.8 1.3-.8.7 0 1.3.2 1.7.3l.2.1.3-2.1zM30 6.3h-1.8c-.6 0-1 .2-1.2.7l-3.4 8.5h2.4l.5-1.3h2.9l.3 1.3H32L30 6.3zm-2.5 6l1.2-3.3.7 3.3h-1.9zM13.5 6.3L11.2 12l-.2-1.3c-.5-1.5-1.9-3.1-3.5-3.9l2 7.7h2.4l3.6-8.2h-2z" fill="#fff"/><path d="M8.7 6.3H5l0 .2c2.9.7 4.8 2.5 5.6 4.6l-.8-4.1c-.1-.5-.6-.7-1.1-.7z" fill="#F9A533"/></svg>
+                {%- comment -%} Mastercard {%- endcomment -%}
+                <svg width="38" height="24" viewBox="0 0 38 24" fill="none"><rect width="38" height="24" rx="4" fill="#252525"/><circle cx="15" cy="12" r="7" fill="#EB001B"/><circle cx="23" cy="12" r="7" fill="#F79E1B"/><path d="M19 7.3a7 7 0 0 1 2.6 4.7A7 7 0 0 1 19 16.7a7 7 0 0 1-2.6-4.7A7 7 0 0 1 19 7.3z" fill="#FF5F00"/></svg>
+                {%- comment -%} PIX {%- endcomment -%}
+                <svg width="38" height="24" viewBox="0 0 38 24" fill="none"><rect width="38" height="24" rx="4" fill="#00BD8D"/><text x="19" y="15" text-anchor="middle" fill="#fff" font-size="10" font-weight="bold" font-family="system-ui">PIX</text></svg>
+                {%- comment -%} Boleto {%- endcomment -%}
+                <svg width="38" height="24" viewBox="0 0 38 24" fill="none"><rect width="38" height="24" rx="4" fill="#333"/><text x="19" y="15" text-anchor="middle" fill="#fff" font-size="8" font-weight="bold" font-family="system-ui">BOLETO</text></svg>
+              </div>
+            </div>
+          {%- endif -%}
+        </div>
+      </div>
+
+      {%- comment -%} ═══ Coluna FAQ ═══ {%- endcomment -%}
+      <div class="rr-faq">
+        {%- if section.settings.faq_heading != blank -%}
+          <h3 class="rr-faq__title">{{ section.settings.faq_heading }}</h3>
+        {%- endif -%}
+
+        <div class="rr-faq__list">
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'faq' -%}
+              <details class="rr-faq__item" name="faq-group" {{ block.shopify_attributes }}
+                       {% if forloop.first %}open{% endif %}>
+                <summary class="rr-faq__question">
+                  <span>{{ block.settings.question }}</span>
+                  <span class="rr-faq__chevron" aria-hidden="true">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="6 9 12 15 18 9"/>
+                    </svg>
+                  </span>
+                </summary>
+                <div class="rr-faq__answer">
+                  {{ block.settings.answer }}
+                </div>
+              </details>
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+
+        {%- comment -%} Contato suporte {%- endcomment -%}
+        {%- if section.settings.support_text != blank -%}
+          <div class="rr-support">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+            </svg>
+            <p>{{ section.settings.support_text }}</p>
+          </div>
+        {%- endif -%}
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  /* ─── Risk Reversal ────────────────────────────────────────────────────── */
+  .risk-reversal {
+    padding: var(--space-20) 0;
+    background: var(--color-bg);
+  }
+
+  .rr-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-12);
+    align-items: start;
+  }
+
+  /* ─── Guarantee Card ───────────────────────────────────────────────────── */
+  .rr-guarantee__card {
+    background: var(--color-bg);
+    border: 2px solid var(--color-primary);
+    border-radius: var(--radius-xl);
+    padding: var(--space-10) var(--space-8);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .rr-guarantee__card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--color-primary), var(--color-success));
+  }
+
+  /* ─── Seal Ring ────────────────────────────────────────────────────────── */
+  .rr-guarantee__seal {
+    display: flex;
+    justify-content: center;
+    margin-bottom: var(--space-6);
+  }
+
+  .rr-guarantee__ring {
+    position: relative;
+    width: 100px;
+    height: 100px;
+  }
+
+  .rr-guarantee__ring-svg {
+    width: 100%;
+    height: 100%;
+    animation: rr-rotate 20s linear infinite;
+  }
+
+  @keyframes rr-rotate {
+    to { transform: rotate(360deg); }
+  }
+
+  .rr-guarantee__ring-inner {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .rr-guarantee__days {
+    font-family: var(--font-heading);
+    font-size: var(--font-size-3xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-primary);
+    line-height: 1;
+  }
+
+  .rr-guarantee__days-label {
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-bold);
+    letter-spacing: 0.15em;
+    color: var(--color-primary);
+    text-transform: uppercase;
+  }
+
+  .rr-guarantee__eyebrow {
+    display: inline-block;
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--color-success);
+    background: color-mix(in srgb, var(--color-success) 10%, transparent);
+    padding: var(--space-1) var(--space-4);
+    border-radius: var(--radius-full);
+    margin-bottom: var(--space-4);
+  }
+
+  .rr-guarantee__title {
+    font-size: clamp(1.5rem, 3vw, var(--font-size-3xl));
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-tight);
+    color: var(--color-text);
+    margin-bottom: var(--space-4);
+  }
+
+  .rr-guarantee__text {
+    font-size: var(--font-size-base);
+    color: var(--color-text-muted);
+    line-height: var(--line-height-relaxed);
+    margin-bottom: var(--space-6);
+    max-width: 420px;
+    margin-inline: auto;
+  }
+
+  /* ─── Guarantee Points ─────────────────────────────────────────────────── */
+  .rr-guarantee__points {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    text-align: left;
+    max-width: 340px;
+    margin: 0 auto var(--space-8) auto;
+  }
+
+  .rr-guarantee__point {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text);
+  }
+
+  .rr-guarantee__point svg {
+    flex-shrink: 0;
+  }
+
+  /* ─── CTA ──────────────────────────────────────────────────────────────── */
+  .rr-guarantee__cta {
+    width: 100%;
+    padding: var(--space-4) var(--space-8);
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-bold);
+    border-radius: var(--radius-full);
+    box-shadow: var(--shadow-lg);
+    transition: all var(--transition-fast);
+    margin-bottom: var(--space-4);
+  }
+
+  .rr-guarantee__cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 24px color-mix(in srgb, var(--color-primary) 30%, transparent);
+  }
+
+  /* ─── Urgency ──────────────────────────────────────────────────────────── */
+  .rr-urgency {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    margin-bottom: var(--space-6);
+  }
+
+  .rr-urgency__pulse {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--color-error);
+    animation: rr-pulse 1.5s ease-in-out infinite;
+  }
+
+  @keyframes rr-pulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.4); }
+    50%      { box-shadow: 0 0 0 8px rgba(220, 38, 38, 0); }
+  }
+
+  .rr-urgency__text {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-error);
+  }
+
+  /* ─── Payment Icons ────────────────────────────────────────────────────── */
+  .rr-payments {
+    border-top: 1px solid var(--color-border);
+    padding-top: var(--space-4);
+  }
+
+  .rr-payments__label {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-2);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: var(--font-weight-medium);
+  }
+
+  .rr-payments__icons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    flex-wrap: wrap;
+  }
+
+  .rr-payments__icons svg {
+    opacity: 0.7;
+    transition: opacity var(--transition-fast);
+  }
+
+  .rr-payments__icons svg:hover {
+    opacity: 1;
+  }
+
+  /* ─── FAQ ───────────────────────────────────────────────────────────────── */
+  .rr-faq__title {
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text);
+    margin-bottom: var(--space-6);
+  }
+
+  .rr-faq__list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .rr-faq__item {
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    transition: box-shadow var(--transition-fast);
+  }
+
+  .rr-faq__item[open] {
+    box-shadow: var(--shadow-sm);
+    border-color: color-mix(in srgb, var(--color-primary) 30%, var(--color-border));
+  }
+
+  .rr-faq__question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    padding: var(--space-4) var(--space-5);
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text);
+    list-style: none;
+    user-select: none;
+    transition: color var(--transition-fast);
+  }
+
+  .rr-faq__question::-webkit-details-marker { display: none; }
+
+  .rr-faq__question:hover {
+    color: var(--color-primary);
+  }
+
+  .rr-faq__chevron {
+    transition: transform 0.3s ease;
+    color: var(--color-primary);
+    flex-shrink: 0;
+  }
+
+  .rr-faq__item[open] .rr-faq__chevron {
+    transform: rotate(180deg);
+  }
+
+  .rr-faq__answer {
+    padding: 0 var(--space-5) var(--space-5) var(--space-5);
+    font-size: var(--font-size-sm);
+    color: var(--color-text-muted);
+    line-height: var(--line-height-relaxed);
+  }
+
+  /* ─── Support ──────────────────────────────────────────────────────────── */
+  .rr-support {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-3);
+    margin-top: var(--space-8);
+    padding: var(--space-4) var(--space-5);
+    background: color-mix(in srgb, var(--color-primary) 5%, transparent);
+    border-radius: var(--radius-lg);
+    border: 1px solid color-mix(in srgb, var(--color-primary) 15%, transparent);
+  }
+
+  .rr-support svg {
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .rr-support p {
+    font-size: var(--font-size-sm);
+    color: var(--color-text);
+    line-height: var(--line-height-relaxed);
+  }
+
+  /* ─── Mobile ───────────────────────────────────────────────────────────── */
+  @media (max-width: 767px) {
+    .risk-reversal {
+      padding: var(--space-12) 0;
+    }
+
+    .rr-grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-10);
+    }
+
+    .rr-guarantee__card {
+      padding: var(--space-8) var(--space-5);
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Garantia & FAQ",
+  "tag": "section",
+  "class": "section-risk-reversal",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Garantia"
+    },
+    {
+      "type": "text",
+      "id": "guarantee_eyebrow",
+      "label": "Eyebrow da garantia",
+      "default": "Risco Zero"
+    },
+    {
+      "type": "html",
+      "id": "heading",
+      "label": "Título da garantia",
+      "default": "Satisfação Garantida ou seu <em>Dinheiro de Volta</em>"
+    },
+    {
+      "type": "number",
+      "id": "guarantee_days",
+      "label": "Dias de garantia",
+      "default": 30
+    },
+    {
+      "type": "textarea",
+      "id": "guarantee_text",
+      "label": "Descrição da garantia",
+      "default": "Teste por 30 dias completos. Se não sentir a diferença na sua postura, devolvemos 100% do seu dinheiro sem perguntas."
+    },
+    {
+      "type": "text",
+      "id": "guarantee_points",
+      "label": "Itens da garantia (separe com |)",
+      "default": "Devolução em até 30 dias|Reembolso total sem burocracia|Sem perguntas — sem estresse|Suporte prioritário via WhatsApp"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "Texto do CTA",
+      "default": "Experimentar Sem Risco"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "Link do CTA"
+    },
+    {
+      "type": "header",
+      "content": "Urgência"
+    },
+    {
+      "type": "checkbox",
+      "id": "urgency_show",
+      "label": "Mostrar indicador de urgência",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "urgency_text",
+      "label": "Texto de urgência",
+      "default": "Oferta por tempo limitado — Últimas unidades com desconto"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_payment_icons",
+      "label": "Mostrar ícones de pagamento",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "FAQ"
+    },
+    {
+      "type": "text",
+      "id": "faq_heading",
+      "label": "Título do FAQ",
+      "default": "Perguntas Frequentes"
+    },
+    {
+      "type": "textarea",
+      "id": "support_text",
+      "label": "Texto de suporte",
+      "default": "Ainda tem dúvidas? Fale com nosso time pelo WhatsApp. Respondemos em menos de 2 horas nos dias úteis."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "faq",
+      "name": "Pergunta FAQ",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Pergunta",
+          "default": "Como funciona o corretor de postura?"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Resposta",
+          "default": "<p>Nosso corretor utiliza tensão progressiva para treinar a memória muscular das suas costas, ensinando seu corpo a manter naturalmente a posição correta.</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Garantia & FAQ",
+      "blocks": [
+        {
+          "type": "faq",
+          "settings": {
+            "question": "O corretor causa desconforto?",
+            "answer": "<p>Não! Diferente dos modelos rígidos, nosso corretor usa tensão suave e progressiva. A maioria dos clientes esquece que está usando após 10 minutos.</p>"
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "Quanto tempo devo usar por dia?",
+            "answer": "<p>Recomendamos começar com 30 minutos e aumentar gradualmente para 2-4 horas diárias. Em 14 dias, seus músculos estarão treinados e a postura será natural.</p>"
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "Aparece por baixo da roupa?",
+            "answer": "<p>Absolutamente não. O design ultrafino com tecido de microporos o torna invisível sob qualquer tipo de roupa — camiseta, camisa social ou blusa.</p>"
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "Serve para qualquer tamanho?",
+            "answer": "<p>Sim! As alças ergonômicas se ajustam de P ao GG. Funciona para homens e mulheres de qualquer biótipo.</p>"
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "Como funciona a garantia de 30 dias?",
+            "answer": "<p>Simples: se em 30 dias você não sentir melhora na sua postura, entre em contato e devolvemos 100% do valor pago — sem perguntas, sem burocracia.</p>"
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "Qual é o prazo de entrega?",
+            "answer": "<p>Enviamos em até 24h após a confirmação do pagamento. O prazo médio de entrega é de 5 a 10 dias úteis para todo o Brasil, com rastreamento completo.</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

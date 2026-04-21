@@ -1,0 +1,604 @@
+{% comment %}
+  ╔══════════════════════════════════════════════════════════════════════════════╗
+  ║  TRUST & AUTHORITY — Seção de Prova Social + Credibilidade Médica          ║
+  ║  Estatísticas animadas, selos de confiança e depoimento médico.            ║
+  ║  100% nativo: CSS custom properties + IntersectionObserver counter.        ║
+  ╚══════════════════════════════════════════════════════════════════════════════╝
+{% endcomment %}
+
+<section
+  id="trust-authority"
+  class="trust-authority"
+  aria-label="{{ section.settings.heading | default: 'Ciência Por Trás da Sua Postura' }}"
+>
+  {%- comment -%} Estatísticas animadas {%- endcomment -%}
+  <div class="ta-stats" role="list" aria-label="Estatísticas">
+    {%- for block in section.blocks -%}
+      {%- if block.type == 'stat' -%}
+        <div class="ta-stats__item" role="listitem" {{ block.shopify_attributes }}>
+          <div class="ta-stats__number"
+               data-count-to="{{ block.settings.number }}"
+               data-count-suffix="{{ block.settings.suffix | default: '' }}">
+            0{{ block.settings.suffix }}
+          </div>
+          <p class="ta-stats__label">{{ block.settings.label }}</p>
+        </div>
+      {%- endif -%}
+    {%- endfor -%}
+  </div>
+
+  {%- comment -%} Corpo da seção {%- endcomment -%}
+  <div class="container">
+    <div class="ta-body">
+      {%- comment -%} Coluna Editorial {%- endcomment -%}
+      <div class="ta-editorial">
+        {%- if section.settings.eyebrow != blank -%}
+          <span class="ta-eyebrow">{{ section.settings.eyebrow }}</span>
+        {%- endif -%}
+        <h2 class="ta-title">{{ section.settings.heading }}</h2>
+        {%- if section.settings.body_text != blank -%}
+          <div class="ta-text rte">{{ section.settings.body_text }}</div>
+        {%- endif -%}
+
+        {%- comment -%} Depoimento médico {%- endcomment -%}
+        {%- if section.settings.doctor_name != blank -%}
+          <blockquote class="ta-quote">
+            <svg class="ta-quote__icon" width="32" height="32" viewBox="0 0 24 24" fill="var(--color-primary)" opacity="0.2">
+              <path d="M6 17h3l2-4V7H5v6h3l-2 4zm8 0h3l2-4V7h-6v6h3l-2 4z"/>
+            </svg>
+            <p class="ta-quote__text">{{ section.settings.doctor_quote }}</p>
+            <footer class="ta-quote__footer">
+              {%- if section.settings.doctor_image != blank -%}
+                {{ section.settings.doctor_image | image_url: width: 80 | image_tag:
+                  class: 'ta-quote__avatar',
+                  loading: 'lazy',
+                  alt: section.settings.doctor_name
+                }}
+              {%- else -%}
+                <div class="ta-quote__avatar ta-quote__avatar--placeholder">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2a4 4 0 1 0 0 8 4 4 0 0 0 0-8z"/><path d="M12 10c-4 0-7 2-7 5v4h14v-4c0-3-3-5-7-5z"/></svg>
+                </div>
+              {%- endif -%}
+              <div>
+                <cite class="ta-quote__name">{{ section.settings.doctor_name }}</cite>
+                {%- if section.settings.doctor_title != blank -%}
+                  <span class="ta-quote__role">{{ section.settings.doctor_title }}</span>
+                {%- endif -%}
+              </div>
+            </footer>
+          </blockquote>
+        {%- endif -%}
+      </div>
+
+      {%- comment -%} Coluna de Selos {%- endcomment -%}
+      <div class="ta-seals">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'seal' -%}
+            <div class="ta-seal" {{ block.shopify_attributes }}>
+              <div class="ta-seal__icon">
+                {%- if block.settings.seal_image != blank -%}
+                  {{ block.settings.seal_image | image_url: width: 120 | image_tag:
+                    class: 'ta-seal__img',
+                    loading: 'lazy',
+                    alt: block.settings.seal_title
+                  }}
+                {%- else -%}
+                  {%- case block.settings.seal_icon -%}
+                    {%- when 'shield' -%}
+                      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+                    {%- when 'medal' -%}
+                      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="1.5"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>
+                    {%- when 'lab' -%}
+                      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="1.5"><path d="M9 3h6v5.172a2 2 0 0 1 .586 1.414l2.828 2.828A4 4 0 0 1 15.586 20H8.414a4 4 0 0 1-2.828-7.586l2.828-2.828A2 2 0 0 0 9 8.172V3z"/><line x1="7" y1="3" x2="17" y2="3"/></svg>
+                    {%- when 'heart' -%}
+                      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                    {%- else -%}
+                      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                  {%- endcase -%}
+                {%- endif -%}
+              </div>
+              <h3 class="ta-seal__title">{{ block.settings.seal_title }}</h3>
+              <p class="ta-seal__desc">{{ block.settings.seal_description }}</p>
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+
+  {%- comment -%} Logos de mídia / parceiros {%- endcomment -%}
+  {%- if section.settings.show_media_bar -%}
+    <div class="ta-media-bar" aria-label="Visto em">
+      <p class="ta-media-bar__label">{{ section.settings.media_bar_label | default: 'Recomendado por' }}</p>
+      <div class="ta-media-bar__logos">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'media_logo' and block.settings.logo != blank -%}
+            {{ block.settings.logo | image_url: width: 160 | image_tag:
+              class: 'ta-media-bar__logo',
+              loading: 'lazy',
+              alt: block.settings.logo_alt | default: 'Logo parceiro'
+            }}
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    </div>
+  {%- endif -%}
+</section>
+
+{%- comment -%} Animated counter script {%- endcomment -%}
+<script>
+  (function() {
+    const counters = document.querySelectorAll('[data-count-to]');
+    if (!counters.length) return;
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const el = entry.target;
+        const target = parseInt(el.dataset.countTo, 10);
+        const suffix = el.dataset.countSuffix || '';
+        const duration = 2000;
+        const start = performance.now();
+
+        function step(now) {
+          const elapsed = now - start;
+          const progress = Math.min(elapsed / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 3); /* easeOutCubic */
+          const current = Math.round(eased * target);
+          el.textContent = current.toLocaleString('pt-BR') + suffix;
+          if (progress < 1) requestAnimationFrame(step);
+        }
+
+        requestAnimationFrame(step);
+        observer.unobserve(el);
+      });
+    }, { threshold: 0.3 });
+
+    counters.forEach(c => observer.observe(c));
+  })();
+</script>
+
+<style>
+  /* ─── Trust & Authority ────────────────────────────────────────────────── */
+  .trust-authority {
+    padding: var(--space-20) 0;
+    background: var(--color-bg-secondary);
+  }
+
+  /* ─── Stats Bar ────────────────────────────────────────────────────────── */
+  .ta-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: var(--space-6);
+    max-width: var(--container-width);
+    margin: 0 auto var(--space-16) auto;
+    padding-inline: var(--container-padding);
+  }
+
+  .ta-stats__item {
+    text-align: center;
+    padding: var(--space-6) var(--space-4);
+    background: var(--color-bg);
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--color-border);
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  }
+
+  .ta-stats__item:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+  }
+
+  .ta-stats__number {
+    font-family: var(--font-heading);
+    font-size: clamp(2rem, 4vw, var(--font-size-5xl));
+    font-weight: var(--font-weight-bold);
+    color: var(--color-primary);
+    line-height: 1;
+    margin-bottom: var(--space-2);
+  }
+
+  .ta-stats__label {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-muted);
+    font-weight: var(--font-weight-medium);
+    line-height: var(--line-height-snug);
+  }
+
+  /* ─── Body Grid ────────────────────────────────────────────────────────── */
+  .ta-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-16);
+    align-items: start;
+  }
+
+  /* ─── Editorial ────────────────────────────────────────────────────────── */
+  .ta-eyebrow {
+    display: inline-block;
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--color-primary);
+    margin-bottom: var(--space-4);
+  }
+
+  .ta-title {
+    font-size: clamp(1.5rem, 3.5vw, var(--font-size-4xl));
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-tight);
+    color: var(--color-text);
+    margin-bottom: var(--space-6);
+  }
+
+  .ta-text {
+    font-size: var(--font-size-base);
+    color: var(--color-text-muted);
+    line-height: var(--line-height-relaxed);
+    margin-bottom: var(--space-8);
+  }
+
+  /* ─── Doctor Quote ─────────────────────────────────────────────────────── */
+  .ta-quote {
+    position: relative;
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-left: 3px solid var(--color-primary);
+    border-radius: var(--radius-lg);
+    padding: var(--space-6);
+  }
+
+  .ta-quote__icon {
+    position: absolute;
+    top: var(--space-4);
+    right: var(--space-4);
+  }
+
+  .ta-quote__text {
+    font-size: var(--font-size-base);
+    font-style: italic;
+    color: var(--color-text);
+    line-height: var(--line-height-relaxed);
+    margin-bottom: var(--space-4);
+  }
+
+  .ta-quote__footer {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+  }
+
+  .ta-quote__avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--color-primary);
+  }
+
+  .ta-quote__avatar--placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: color-mix(in srgb, var(--color-primary) 10%, transparent);
+    color: var(--color-primary);
+  }
+
+  .ta-quote__name {
+    display: block;
+    font-style: normal;
+    font-weight: var(--font-weight-semibold);
+    font-size: var(--font-size-sm);
+    color: var(--color-text);
+  }
+
+  .ta-quote__role {
+    display: block;
+    font-size: var(--font-size-xs);
+    color: var(--color-text-muted);
+  }
+
+  /* ─── Seals Grid ───────────────────────────────────────────────────────── */
+  .ta-seals {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-4);
+  }
+
+  .ta-seal {
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    padding: var(--space-6);
+    text-align: center;
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  }
+
+  .ta-seal:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+  }
+
+  .ta-seal__icon {
+    margin-bottom: var(--space-3);
+    display: flex;
+    justify-content: center;
+  }
+
+  .ta-seal__img {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+  }
+
+  .ta-seal__title {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text);
+    margin-bottom: var(--space-1);
+  }
+
+  .ta-seal__desc {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-muted);
+    line-height: var(--line-height-relaxed);
+  }
+
+  /* ─── Media Bar ────────────────────────────────────────────────────────── */
+  .ta-media-bar {
+    margin-top: var(--space-16);
+    padding: var(--space-8) var(--container-padding);
+    text-align: center;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .ta-media-bar__label {
+    font-size: var(--font-size-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--color-text-muted);
+    font-weight: var(--font-weight-semibold);
+    margin-bottom: var(--space-6);
+  }
+
+  .ta-media-bar__logos {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-10);
+    flex-wrap: wrap;
+  }
+
+  .ta-media-bar__logo {
+    height: 28px;
+    width: auto;
+    opacity: 0.45;
+    filter: grayscale(1);
+    transition: all var(--transition-normal);
+  }
+
+  .ta-media-bar__logo:hover {
+    opacity: 1;
+    filter: grayscale(0);
+  }
+
+  /* ─── Mobile ───────────────────────────────────────────────────────────── */
+  @media (max-width: 767px) {
+    .trust-authority {
+      padding: var(--space-12) 0;
+    }
+
+    .ta-stats {
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-3);
+      margin-bottom: var(--space-10);
+    }
+
+    .ta-stats__item {
+      padding: var(--space-4) var(--space-3);
+    }
+
+    .ta-body {
+      grid-template-columns: 1fr;
+      gap: var(--space-10);
+    }
+
+    .ta-seals {
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-3);
+    }
+
+    .ta-seal {
+      padding: var(--space-4);
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Autoridade & Confiança",
+  "tag": "section",
+  "class": "section-trust",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Ciência + Resultados"
+    },
+    {
+      "type": "html",
+      "id": "heading",
+      "label": "Título",
+      "default": "Aprovado por <em>Fisioterapeutas</em> e milhares de clientes"
+    },
+    {
+      "type": "richtext",
+      "id": "body_text",
+      "label": "Texto do corpo",
+      "default": "<p>Desenvolvido em parceria com especialistas em ortopedia e fisioterapia, nosso corretor de postura é recomendado por profissionais de saúde em todo o Brasil.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Depoimento Médico"
+    },
+    {
+      "type": "text",
+      "id": "doctor_name",
+      "label": "Nome do profissional",
+      "default": "Dra. Ana Carreiro"
+    },
+    {
+      "type": "text",
+      "id": "doctor_title",
+      "label": "Título / Especialidade",
+      "default": "Fisioterapeuta — CREFITO 12345"
+    },
+    {
+      "type": "textarea",
+      "id": "doctor_quote",
+      "label": "Citação",
+      "default": "Recomendo este corretor para meus pacientes com dor crônica nas costas. A abordagem progressiva treina a memória muscular de forma segura e eficaz."
+    },
+    {
+      "type": "image_picker",
+      "id": "doctor_image",
+      "label": "Foto do profissional"
+    },
+    {
+      "type": "header",
+      "content": "Barra de Mídia"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_media_bar",
+      "label": "Exibir barra de logos",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "media_bar_label",
+      "label": "Rótulo da barra",
+      "default": "Recomendado por"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "stat",
+      "name": "Estatística",
+      "settings": [
+        {
+          "type": "number",
+          "id": "number",
+          "label": "Número",
+          "default": 15400
+        },
+        {
+          "type": "text",
+          "id": "suffix",
+          "label": "Sufixo (ex: +, %, k)",
+          "default": "+"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Rótulo",
+          "default": "Clientes Satisfeitos"
+        }
+      ]
+    },
+    {
+      "type": "seal",
+      "name": "Selo de Confiança",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "seal_image",
+          "label": "Imagem do selo (opcional)"
+        },
+        {
+          "type": "select",
+          "id": "seal_icon",
+          "label": "Ícone padrão (se sem imagem)",
+          "options": [
+            { "value": "shield", "label": "Escudo" },
+            { "value": "medal", "label": "Medalha" },
+            { "value": "lab", "label": "Laboratório" },
+            { "value": "heart", "label": "Coração" }
+          ],
+          "default": "shield"
+        },
+        {
+          "type": "text",
+          "id": "seal_title",
+          "label": "Título do selo",
+          "default": "Aprovação Médica"
+        },
+        {
+          "type": "text",
+          "id": "seal_description",
+          "label": "Descrição",
+          "default": "Testado e aprovado por profissionais de saúde."
+        }
+      ]
+    },
+    {
+      "type": "media_logo",
+      "name": "Logo de Mídia",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "logo",
+          "label": "Logo"
+        },
+        {
+          "type": "text",
+          "id": "logo_alt",
+          "label": "Texto alternativo",
+          "default": "Logo parceiro"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Autoridade & Confiança",
+      "blocks": [
+        {
+          "type": "stat",
+          "settings": { "number": 15400, "suffix": "+", "label": "Clientes Satisfeitos" }
+        },
+        {
+          "type": "stat",
+          "settings": { "number": 98, "suffix": "%", "label": "Recomendam a Amigos" }
+        },
+        {
+          "type": "stat",
+          "settings": { "number": 14, "suffix": " dias", "label": "Para Resultados" }
+        },
+        {
+          "type": "stat",
+          "settings": { "number": 4, "suffix": ".9★", "label": "Avaliação Média" }
+        },
+        {
+          "type": "seal",
+          "settings": { "seal_icon": "shield", "seal_title": "Garantia 30 Dias", "seal_description": "Devolução sem burocracia se não gostar." }
+        },
+        {
+          "type": "seal",
+          "settings": { "seal_icon": "medal", "seal_title": "Aprovado por Fisioterapeutas", "seal_description": "Recomendado por +200 profissionais de saúde." }
+        },
+        {
+          "type": "seal",
+          "settings": { "seal_icon": "lab", "seal_title": "Material Hipoalérgico", "seal_description": "Tecido certificado livre de substâncias nocivas." }
+        },
+        {
+          "type": "seal",
+          "settings": { "seal_icon": "heart", "seal_title": "Ergonomia Premium", "seal_description": "Design baseado em estudos biomecânicos." }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
