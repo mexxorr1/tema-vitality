@@ -1,173 +1,69 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
-
     "image-banner": {
       "type": "image-banner",
       "blocks": {
         "heading": {
           "type": "heading",
           "settings": {
-            "heading": "¿Dolor de Espalda Después de 8 Horas en el Escritorio?",
+            "heading": "Transforma tu Postura, Transforma tu Vida",
             "heading_size": "h0"
           }
         },
         "text": {
           "type": "text",
           "settings": {
-            "text": "El Corrector Vitality™ corrige tu postura en 21 días. Validado por +12.400 clientes satisfechos.",
+            "text": "Corrector postural diseñado con tecnología premium. Resultados visibles en 30 días o te devolvemos tu dinero.",
             "text_style": "subtitle"
           }
         },
         "button": {
           "type": "buttons",
           "settings": {
-            "button_label_1": "Quiero Aliviar Mi Espalda →",
-            "button_link_1": "shopify:\/\/collections\/all",
+            "button_label_1": "Comprar Ahora",
+            "button_link_1": "shopify://collections/all",
             "button_style_secondary_1": false,
-            "button_label_2": "Ver las 847 Reseñas ⭐⭐⭐⭐⭐",
+            "button_label_2": "Ver Resultados",
             "button_link_2": "",
             "button_style_secondary_2": true
           }
         }
       },
-      "block_order": ["heading", "text", "button"],
+      "block_order": [
+        "heading",
+        "text",
+        "button"
+      ],
       "settings": {
-        "image_overlay_opacity": 45,
+        "image_overlay_opacity": 40,
         "image_height": "large",
-        "desktop_content_position": "middle-left",
-        "show_text_box": true,
-        "desktop_content_alignment": "left",
-        "color_scheme": "scheme-1",
-        "image_behavior": "ambient",
-        "mobile_content_alignment": "center",
-        "stack_images_on_mobile": false,
-        "show_text_below": false,
-        "padding_top": 0,
-        "padding_bottom": 0
-      }
-    },
-
-    "trust-bar": {
-      "type": "multicolumn",
-      "blocks": {
-        "trust-1": {
-          "type": "column",
-          "settings": {
-            "image_width": "33%",
-            "title": "Envío en 24h",
-            "text": "<p>Procesamos tu pedido el mismo día hábil</p>",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "trust-2": {
-          "type": "column",
-          "settings": {
-            "image_width": "33%",
-            "title": "Pago 100% Seguro",
-            "text": "<p>SSL encriptado. Visa, Mastercard, PayPal y más</p>",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "trust-3": {
-          "type": "column",
-          "settings": {
-            "image_width": "33%",
-            "title": "Garantía 30 Días",
-            "text": "<p>Sin preguntas. Reembolso completo garantizado</p>",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "trust-4": {
-          "type": "column",
-          "settings": {
-            "image_width": "33%",
-            "title": "⭐ 4.9 / 5",
-            "text": "<p>Valorado por más de 12.400 clientes reales</p>",
-            "link_label": "",
-            "link": ""
-          }
-        }
-      },
-      "block_order": ["trust-1", "trust-2", "trust-3", "trust-4"],
-      "settings": {
-        "title": "",
-        "heading_size": "h2",
-        "image_width": "third",
-        "image_ratio": "adapt",
-        "columns_desktop": 4,
-        "column_alignment": "center",
-        "background_style": "none",
-        "button_label": "",
-        "button_link": "",
-        "color_scheme": "scheme-2",
-        "columns_mobile": "2",
-        "swipe_on_mobile": false,
-        "padding_top": 24,
-        "padding_bottom": 24
-      }
-    },
-
-    "image-with-text-before-after": {
-      "type": "image-with-text",
-      "blocks": {
-        "caption": {
-          "type": "caption",
-          "settings": {
-            "caption": "Resultados reales",
-            "icon_name": "none",
-            "icon_width": 24
-          }
-        },
-        "heading": {
-          "type": "heading",
-          "settings": {
-            "heading": "De Hombros Caídos a Postura Impecable en 3 Semanas",
-            "heading_size": "h1"
-          }
-        },
-        "text": {
-          "type": "text",
-          "settings": {
-            "text": "<p>El 94% de nuestros clientes reporta mejoras visibles en la primera semana. No es magia — es ingeniería postural aplicada a tu cuerpo.</p><p>El Corrector Vitality™ actúa como un \"recordatorio muscular\" que, con el tiempo, entrena tu espalda para mantener la postura correcta de forma natural, incluso sin usarlo.</p>"
-          }
-        },
-        "button": {
-          "type": "button",
-          "settings": {
-            "button_label": "Quiero Esta Transformación",
-            "button_link": "shopify:\/\/collections\/all",
-            "button_style_secondary": false
-          }
-        }
-      },
-      "block_order": ["caption", "heading", "text", "button"],
-      "settings": {
-        "height": "adapt",
-        "desktop_image_width": "medium",
-        "layout": "image_first",
-        "desktop_content_position": "middle",
-        "desktop_content_alignment": "left",
-        "content_layout": "no-overlap",
-        "section_color_scheme": "scheme-1",
-        "color_scheme": "scheme-1",
         "image_behavior": "none",
-        "mobile_content_alignment": "left",
-        "padding_top": 36,
-        "padding_bottom": 36
+        "desktop_content_position": "middle-center",
+        "desktop_content_alignment": "center",
+        "show_text_box": false,
+        "color_scheme": "scheme-1",
+        "stack_images_on_mobile": false,
+        "mobile_content_alignment": "center",
+        "show_text_below": false
       }
     },
-
     "multicolumn-features": {
       "type": "multicolumn",
       "blocks": {
         "col-1": {
           "type": "column",
           "settings": {
-            "title": "94% Alivia el Dolor",
-            "text": "<p>El 94% de usuarios reporta reducción del dolor cervical y lumbar en la primera semana de uso.</p>",
+            "title": "Diseño Ergonómico",
+            "text": "<p>Tecnología de soporte adaptativo que se ajusta a tu anatomía única para máxima comodidad.</p>",
             "link_label": "",
             "link": ""
           }
@@ -175,8 +71,8 @@
         "col-2": {
           "type": "column",
           "settings": {
-            "title": "8h+ Sin Irritación",
-            "text": "<p>Material transpirable de grado médico. Puedes usarlo bajo la ropa todo el día sin notar molestias.</p>",
+            "title": "Material Transpirable",
+            "text": "<p>Tela premium de malla que permite la circulación del aire. Úsalo todo el día sin molestias.</p>",
             "link_label": "",
             "link": ""
           }
@@ -184,58 +80,52 @@
         "col-3": {
           "type": "column",
           "settings": {
-            "title": "Hábito en 21 Días",
-            "text": "<p>En 3 semanas de uso constante, tu musculatura aprende la postura correcta. Sin corrector y sin dolor.</p>",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "col-4": {
-          "type": "column",
-          "settings": {
-            "title": "#1 en Ventas 2024",
-            "text": "<p>El corrector postural más vendido en Latinoamérica. +12.400 clientes lo eligen cada mes.</p>",
+            "title": "Garantía de 30 Días",
+            "text": "<p>Si no notas mejoras en tu postura en 30 días, te devolvemos el 100% de tu dinero.</p>",
             "link_label": "",
             "link": ""
           }
         }
       },
-      "block_order": ["col-1", "col-2", "col-3", "col-4"],
+      "block_order": [
+        "col-1",
+        "col-2",
+        "col-3"
+      ],
       "settings": {
-        "title": "Por Qué Vitality Funciona Cuando Todo lo Demás Falla",
+        "title": "¿Por Qué Elegir Vitality?",
         "heading_size": "h1",
         "image_width": "third",
         "image_ratio": "adapt",
-        "columns_desktop": 4,
-        "column_alignment": "center",
-        "background_style": "primary",
         "button_label": "",
         "button_link": "",
-        "color_scheme": "scheme-2",
+        "columns_desktop": 3,
+        "column_alignment": "center",
+        "background_style": "primary",
+        "color_scheme": "scheme-1",
         "columns_mobile": "1",
         "swipe_on_mobile": false,
-        "padding_top": 52,
+        "padding_top": 40,
         "padding_bottom": 52
       }
     },
-
     "featured-collection": {
       "type": "featured-collection",
       "settings": {
+        "collection": "all",
+        "products_to_show": 4,
         "title": "Nuestros Más Vendidos",
         "heading_size": "h1",
-        "description": "Elegidos por +12.400 personas que decidieron dejar de sufrir de la espalda",
-        "show_description": true,
+        "description": "",
+        "show_description": false,
         "description_style": "body",
-        "collection": "all",
-        "products_to_show": 3,
-        "columns_desktop": 3,
+        "columns_desktop": 4,
+        "enable_desktop_slider": false,
         "full_width": false,
         "show_view_all": true,
         "view_all_style": "solid",
-        "enable_desktop_slider": false,
         "color_scheme": "scheme-1",
-        "image_ratio": "square",
+        "image_ratio": "portrait",
         "image_shape": "default",
         "show_secondary_image": true,
         "show_vendor": false,
@@ -247,241 +137,135 @@
         "padding_bottom": 36
       }
     },
-
-    "testimonials": {
-      "type": "multirow",
-      "blocks": {
-        "row-1": {
-          "type": "row",
-          "settings": {
-            "image_width": "33%",
-            "caption": "⭐⭐⭐⭐⭐ Reseña verificada",
-            "heading": "\"En 3 semanas dejé de tomar ibuprofeno para el cuello\"",
-            "text": "<p>Trabajaba 10 horas frente al ordenador y el dolor de cuello era constante. A los 7 días de usar el Corrector Vitality noté la diferencia. A las 3 semanas, literalmente dejé de necesitar medicación. Ojalá lo hubiese descubierto antes.</p><p><strong>— María G., Madrid</strong> · Compradora verificada · Lleva 4 meses usándolo</p>",
-            "button_label": "",
-            "button_link": ""
-          }
-        },
-        "row-2": {
-          "type": "row",
-          "settings": {
-            "image_width": "33%",
-            "caption": "⭐⭐⭐⭐⭐ Reseña verificada",
-            "heading": "\"El mejor dinero que invertí en mi salud en años\"",
-            "text": "<p>Soy programador y mi espalda era un desastre. Probé fisioterapia, almohadas ortopédicas, de todo. Nada tan efectivo como esto. Es discreto, lo uso debajo de la camisa y nadie lo nota. Mi postura cambió completamente.</p><p><strong>— Carlos R., Ciudad de México</strong> · Comprador verificado · Recomienda este producto</p>",
-            "button_label": "",
-            "button_link": ""
-          }
-        },
-        "row-3": {
-          "type": "row",
-          "settings": {
-            "image_width": "33%",
-            "caption": "⭐⭐⭐⭐⭐ Reseña verificada",
-            "heading": "\"Lo uso 6 horas al día y es como si no llevara nada\"",
-            "text": "<p>Tenía miedo de que fuese incómodo o que se notase bajo la ropa. Para nada. El material es increíblemente suave y transpirable. Después de 2 meses mis colegas me preguntaron si había ido al fisioterapeuta — mi postura cambió tanto.</p><p><strong>— Ana M., Buenos Aires</strong> · Compradora verificada · Pedido su segundo corrector</p>",
-            "button_label": "Ver Todas las Reseñas",
-            "button_link": ""
-          }
-        }
-      },
-      "block_order": ["row-1", "row-2", "row-3"],
-      "settings": {
-        "image_height": "adapt",
-        "desktop_image_width": "medium",
-        "heading_size": "h2",
-        "text_style": "body",
-        "button_style": "secondary",
-        "desktop_content_alignment": "left",
-        "color_scheme": "scheme-1",
-        "first_block_background": false,
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
-
-    "how-it-works": {
-      "type": "multicolumn",
-      "blocks": {
-        "step-1": {
-          "type": "column",
-          "settings": {
-            "title": "1. Ponlo",
-            "text": "<p>Colócalo sobre tus hombros en menos de 30 segundos. Sin botones, sin complicaciones. Tan fácil como ponerse una mochila.</p>",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "step-2": {
-          "type": "column",
-          "settings": {
-            "title": "2. Ajústalo",
-            "text": "<p>Regula las correas hasta que sientas una presión suave y cómoda. Tarda 10 segundos. Una vez ajustado, listo para todo el día.</p>",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "step-3": {
-          "type": "column",
-          "settings": {
-            "title": "3. Siéntelo",
-            "text": "<p>En los primeros minutos notas cómo tus hombros se abren y tu columna se alinea. Después de 3 semanas, tu cuerpo lo hace solo.</p>",
-            "link_label": "",
-            "link": ""
-          }
-        }
-      },
-      "block_order": ["step-1", "step-2", "step-3"],
-      "settings": {
-        "title": "Tan Simple Como 1, 2, 3",
-        "heading_size": "h1",
-        "image_width": "third",
-        "image_ratio": "adapt",
-        "columns_desktop": 3,
-        "column_alignment": "center",
-        "background_style": "primary",
-        "button_label": "Comprar Ahora",
-        "button_link": "shopify:\/\/collections\/all",
-        "color_scheme": "scheme-3",
-        "columns_mobile": "1",
-        "swipe_on_mobile": false,
-        "padding_top": 52,
-        "padding_bottom": 52
-      }
-    },
-
-    "rich-text-cta": {
-      "type": "rich-text",
-      "blocks": {
-        "caption-cta": {
-          "type": "caption",
-          "settings": {
-            "caption": "⚡ Oferta por Tiempo Limitado",
-            "icon_name": "none",
-            "icon_width": 24
-          }
-        },
-        "heading-cta": {
-          "type": "heading",
-          "settings": {
-            "heading": "30% OFF Hoy — Precio Regular Mañana",
-            "heading_size": "h1"
-          }
-        },
-        "text-cta": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Solo quedan <strong>23 unidades</strong> al precio de lanzamiento. Más de 12.400 personas ya transformaron su postura. ¿Cuándo es tu momento?</p>"
-          }
-        },
-        "button-cta": {
-          "type": "button",
-          "settings": {
-            "button_label": "Comprar con 30% OFF — Envío Gratis",
-            "button_link": "shopify:\/\/collections\/all",
-            "button_style_secondary": false,
-            "button_label_2": "✓ Garantía 30 días sin riesgo",
-            "button_link_2": "",
-            "button_style_secondary_2": true
-          }
-        }
-      },
-      "block_order": ["caption-cta", "heading-cta", "text-cta", "button-cta"],
-      "settings": {
-        "desktop_content_position": "center",
-        "content_alignment": "center",
-        "color_scheme": "scheme-4",
-        "full_width": true,
-        "padding_top": 72,
-        "padding_bottom": 72
-      }
-    },
-
     "collapsible-content": {
       "type": "collapsible-content",
       "blocks": {
         "faq-1": {
           "type": "collapsible_row",
           "settings": {
-            "heading": "¿En cuánto tiempo veo resultados reales?",
-            "icon": "stopwatch",
-            "row_content": "<p>La mayoría de nuestros clientes nota mejora postural en los primeros 7 días. Para un cambio muscular permanente, recomendamos uso continuo durante 21 días. El 94% reporta alivio del dolor en la primera semana.</p>",
+            "heading": "¿Cuánto tiempo debo usar el corrector?",
+            "icon": "clipboard",
+            "row_content": "<p>Recomendamos comenzar con 15-30 minutos al día e ir aumentando gradualmente. La mayoría de nuestros clientes lo usan 2-4 horas diarias para resultados óptimos.</p>",
             "page": ""
           }
         },
         "faq-2": {
           "type": "collapsible_row",
           "settings": {
-            "heading": "¿Se nota debajo de la ropa del trabajo?",
+            "heading": "¿Se puede usar debajo de la ropa?",
             "icon": "shirt",
-            "row_content": "<p>No. El Corrector Vitality™ tiene un perfil ultra-delgado de solo 4mm. Miles de nuestros clientes lo usan bajo camisas formales, blusas y hasta uniformes de trabajo sin que nadie lo note.</p>",
+            "row_content": "<p>Sí, nuestro corrector tiene un diseño ultra-delgado que se adapta discretamente debajo de cualquier tipo de ropa sin ser visible.</p>",
             "page": ""
           }
         },
         "faq-3": {
           "type": "collapsible_row",
           "settings": {
-            "heading": "¿Cuántas horas al día debo usarlo?",
-            "icon": "clipboard",
-            "row_content": "<p>Recomendamos empezar con 15-20 minutos e ir aumentando gradualmente. En 2 semanas, la mayoría de usuarios lo lleva cómodamente 4-6 horas. No es necesario usarlo durante el sueño.</p>",
+            "heading": "¿Qué tallas están disponibles?",
+            "icon": "ruler",
+            "row_content": "<p>Disponemos de tallas S, M, L y XL. Consulta nuestra guía de tallas para encontrar la medida perfecta según tu contorno de pecho.</p>",
             "page": ""
           }
         },
         "faq-4": {
           "type": "collapsible_row",
           "settings": {
-            "heading": "¿Qué pasa si no me funciona? ¿Pierdo mi dinero?",
+            "heading": "¿Cómo funciona la garantía de devolución?",
             "icon": "return",
-            "row_content": "<p>No. Ofrecemos garantía total de 30 días. Si no notas mejoras, nos contactas, te devolvemos el 100% de tu dinero. Sin formularios complicados, sin preguntas incómodas. Tu satisfacción es nuestra prioridad.</p>",
+            "row_content": "<p>Si no estás satisfecho con tu compra, tienes 30 días para devolverlo y recibir un reembolso completo. Sin preguntas, sin complicaciones.</p>",
             "page": ""
           }
         },
         "faq-5": {
           "type": "collapsible_row",
           "settings": {
-            "heading": "¿Cuánto tarda el envío a mi país?",
+            "heading": "¿Cuánto tarda el envío?",
             "icon": "truck",
-            "row_content": "<p>Procesamos tu pedido en menos de 24 horas hábiles. El envío estándar tarda 7-12 días hábiles. Ofrecemos envío express (3-5 días hábiles) con cobertura a toda Latinoamérica, España y Estados Unidos.</p>",
-            "page": ""
-          }
-        },
-        "faq-6": {
-          "type": "collapsible_row",
-          "settings": {
-            "heading": "¿Es apto para personas con problemas de espalda severos?",
-            "icon": "question_mark",
-            "row_content": "<p>El Corrector Vitality™ está diseñado para uso preventivo y para molestias posturales del día a día. Si tienes diagnósticos médicos específicos (escoliosis severa, hernias discales, etc.), consulta con tu médico antes de usarlo. Para personas sanas con malos hábitos posturales, es perfectamente seguro.</p>",
+            "row_content": "<p>Procesamos tu pedido en 24 horas. El envío estándar tarda 7-12 días hábiles. También ofrecemos envío express de 3-5 días hábiles.</p>",
             "page": ""
           }
         }
       },
-      "block_order": ["faq-1", "faq-2", "faq-3", "faq-4", "faq-5", "faq-6"],
+      "block_order": [
+        "faq-1",
+        "faq-2",
+        "faq-3",
+        "faq-4",
+        "faq-5"
+      ],
       "settings": {
         "caption": "FAQ",
-        "heading": "Respuestas a Tus Dudas",
+        "heading": "Preguntas Frecuentes",
         "heading_size": "h1",
         "heading_alignment": "center",
         "layout": "none",
-        "color_scheme": "scheme-2",
         "container_color_scheme": "scheme-1",
-        "open_first_collapsible_row": true,
+        "color_scheme": "scheme-2",
+        "open_first_collapsible_row": false,
         "image_ratio": "adapt",
         "desktop_layout": "image_second",
-        "padding_top": 52,
-        "padding_bottom": 52
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "rich-text-cta": {
+      "type": "rich-text",
+      "blocks": {
+        "heading-cta": {
+          "type": "heading",
+          "settings": {
+            "heading": "Únete a +10,000 Personas con Mejor Postura",
+            "heading_size": "h1"
+          }
+        },
+        "text-cta": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Nuestro corrector postural ha transformado la vida de miles de personas. No esperes más para sentirte mejor.</p>"
+          }
+        },
+        "button-cta": {
+          "type": "button",
+          "settings": {
+            "button_label": "Comprar Ahora — Envío Gratis",
+            "button_link": "shopify://collections/all",
+            "button_style_secondary": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading-cta",
+        "text-cta",
+        "button-cta"
+      ],
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-4",
+        "full_width": true,
+        "padding_top": 56,
+        "padding_bottom": 56
+      }
+    },
+    "best_sellers_rAWjhV": {
+      "type": "best-sellers",
+      "name": "Más Vendidos",
+      "settings": {
+        "heading": "Los más vendidos",
+        "collection": "mas-vendidos",
+        "products_to_show": 4
       }
     }
-
   },
   "order": [
     "image-banner",
-    "trust-bar",
-    "image-with-text-before-after",
     "multicolumn-features",
     "featured-collection",
-    "testimonials",
-    "how-it-works",
+    "collapsible-content",
     "rich-text-cta",
-    "collapsible-content"
+    "best_sellers_rAWjhV"
   ]
 }
