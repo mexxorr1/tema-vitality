@@ -1,339 +1,158 @@
 [
   {
-    "name": "Cores e Tipografia",
+    "name": "theme_info",
+    "theme_name": "Vitality",
+    "theme_author": "Antigravity",
+    "theme_version": "2.0.0",
+    "theme_documentation_url": "https://github.com/mexxorr1/tema-vitality",
+    "theme_support_url": "https://github.com/mexxorr1/tema-vitality/issues"
+  },
+  {
+    "name": "Colores y Tipografía",
     "settings": [
       {
         "type": "header",
-        "content": "Cores principais"
+        "content": "Colores principales"
       },
       {
         "type": "color",
         "id": "color_primary",
-        "label": "Cor primária",
+        "label": "Color primario",
         "default": "#000000",
-        "info": "Usada em botões, links e elementos de destaque"
+        "info": "Usada en botones, enlaces y elementos destacados"
       },
       {
         "type": "color",
         "id": "color_secondary",
-        "label": "Cor secundária",
+        "label": "Color secundario",
         "default": "#ffffff"
       },
       {
         "type": "color",
         "id": "color_accent",
-        "label": "Cor de destaque / Promoção",
+        "label": "Color de acento / Promoción",
         "default": "#FF3300",
-        "info": "Usada em badges de promoção e alertas"
+        "info": "Usada en badges de promoción y alertas"
       },
       {
         "type": "header",
-        "content": "Texto e Fundo"
+        "content": "Texto y Fondo"
       },
       {
         "type": "color",
         "id": "color_text",
-        "label": "Cor do texto principal",
+        "label": "Color del texto principal",
         "default": "#1A1A1A"
       },
       {
         "type": "color",
         "id": "color_background",
-        "label": "Cor de fundo principal",
+        "label": "Color de fondo principal",
         "default": "#ffffff"
       },
       {
         "type": "color",
         "id": "color_background_secondary",
-        "label": "Cor de fundo secundária",
+        "label": "Color de fondo secundario",
         "default": "#F5F5F5",
-        "info": "Usada em seções alternadas e cards"
+        "info": "Usada en secciones alternadas y cards"
       },
       {
         "type": "header",
-        "content": "Tipografia"
+        "content": "Tipografía"
       },
       {
         "type": "font_picker",
         "id": "font_heading",
-        "label": "Fonte dos títulos",
+        "label": "Fuente de los títulos",
         "default": "assistant_n4"
       },
       {
         "type": "font_picker",
         "id": "font_body",
-        "label": "Fonte do corpo",
+        "label": "Fuente del cuerpo",
         "default": "assistant_n4"
       },
       {
         "type": "range",
         "id": "font_size_scale",
-        "label": "Escala da tipografia",
+        "label": "Escala de tipografía",
         "min": 85,
         "max": 130,
         "step": 5,
         "unit": "%",
         "default": 100,
-        "info": "Ajusta o tamanho base das fontes em todo o site"
+        "info": "Ajusta el tamaño base de las fuentes en todo el sitio"
       }
     ]
   },
   {
-    "name": "Layout e Espaçamento",
+    "name": "Layout y Espaciado",
     "settings": [
       {
-        "type": "header",
-        "content": "Container"
-      },
-      {
         "type": "select",
-        "id": "layout_container_width",
-        "label": "Largura máxima do container",
+        "id": "layout_style",
+        "label": "Estilo del layout",
         "options": [
-          { "value": "1120px", "label": "Estreito (1120px)" },
-          { "value": "1280px", "label": "Padrão (1280px)" },
-          { "value": "1440px", "label": "Largo (1440px)" },
-          { "value": "1600px", "label": "Extra largo (1600px)" }
+          { "value": "wide", "label": "Ancho completo" },
+          { "value": "boxed", "label": "Contenido centrado" }
         ],
-        "default": "1280px"
-      },
-      {
-        "type": "header",
-        "content": "Bordas arredondadas"
-      },
-      {
-        "type": "select",
-        "id": "border_radius_style",
-        "label": "Estilo de bordas",
-        "options": [
-          { "value": "none", "label": "Reto (0px)" },
-          { "value": "subtle", "label": "Sutil (4px)" },
-          { "value": "rounded", "label": "Arredondado (8px)" },
-          { "value": "pill", "label": "Pill (16px)" }
-        ],
-        "default": "rounded"
-      }
-    ]
-  },
-  {
-    "name": "Header",
-    "settings": [
-      {
-        "type": "image_picker",
-        "id": "logo",
-        "label": "Logo da loja"
+        "default": "wide"
       },
       {
         "type": "range",
-        "id": "logo_width",
-        "label": "Largura do logo (px)",
-        "min": 80,
-        "max": 300,
-        "step": 10,
-        "default": 160
+        "id": "section_spacing",
+        "label": "Espaciado entre secciones",
+        "min": 0,
+        "max": 100,
+        "step": 4,
+        "unit": "px",
+        "default": 36
       },
       {
-        "type": "color",
-        "id": "header_bg_color",
-        "label": "Cor de fundo do header",
-        "default": "#ffffff"
-      },
-      {
-        "type": "color",
-        "id": "header_text_color",
-        "label": "Cor do texto do header",
-        "default": "#000000"
-      },
-      {
-        "type": "checkbox",
-        "id": "header_sticky",
-        "label": "Header fixo ao rolar",
-        "default": true
-      },
-      {
-        "type": "checkbox",
-        "id": "header_transparent",
-        "label": "Header transparente no topo da página",
-        "default": false,
-        "info": "Ideal para páginas com hero de tela cheia"
+        "type": "range",
+        "id": "border_radius",
+        "label": "Redondeo de bordes",
+        "min": 0,
+        "max": 40,
+        "step": 4,
+        "unit": "px",
+        "default": 16,
+        "info": "Afecta botones, cards y contenedores"
       }
     ]
   },
   {
-    "name": "Footer",
-    "settings": [
-      {
-        "type": "color",
-        "id": "footer_bg_color",
-        "label": "Cor de fundo do footer",
-        "default": "#1A1A1A"
-      },
-      {
-        "type": "color",
-        "id": "footer_text_color",
-        "label": "Cor do texto do footer",
-        "default": "#ffffff"
-      },
-      {
-        "type": "richtext",
-        "id": "footer_about_text",
-        "label": "Texto 'Sobre a loja'",
-        "default": "<p>Descrição breve da sua loja.</p>"
-      },
-      {
-        "type": "image_picker",
-        "id": "footer_logo",
-        "label": "Logo no footer (opcional)",
-        "info": "Se vazio, usa o logo principal"
-      },
-      {
-        "type": "header",
-        "content": "Pagamentos aceitos"
-      },
-      {
-        "type": "checkbox",
-        "id": "show_payment_icons",
-        "label": "Mostrar ícones de pagamento",
-        "default": true
-      }
-    ]
-  },
-  {
-    "name": "Produto",
+    "name": "Redes Sociales",
     "settings": [
       {
         "type": "header",
-        "content": "Card de produto"
-      },
-      {
-        "type": "checkbox",
-        "id": "product_card_show_vendor",
-        "label": "Mostrar fornecedor/marca",
-        "default": false
-      },
-      {
-        "type": "checkbox",
-        "id": "product_card_show_rating",
-        "label": "Mostrar avaliação (requer app de reviews)",
-        "default": false
-      },
-      {
-        "type": "select",
-        "id": "product_card_image_ratio",
-        "label": "Proporção da imagem do produto",
-        "options": [
-          { "value": "1/1", "label": "Quadrado (1:1)" },
-          { "value": "4/3", "label": "Paisagem (4:3)" },
-          { "value": "3/4", "label": "Retrato (3:4)" },
-          { "value": "16/9", "label": "Widescreen (16:9)" }
-        ],
-        "default": "1/1"
-      },
-      {
-        "type": "header",
-        "content": "Página do produto"
-      },
-      {
-        "type": "checkbox",
-        "id": "product_enable_zoom",
-        "label": "Ativar zoom na imagem",
-        "default": true
-      },
-      {
-        "type": "checkbox",
-        "id": "product_show_quantity",
-        "label": "Mostrar seletor de quantidade",
-        "default": true
-      },
-      {
-        "type": "checkbox",
-        "id": "product_show_share_buttons",
-        "label": "Mostrar botões de compartilhar",
-        "default": false
-      }
-    ]
-  },
-  {
-    "name": "Carrinho",
-    "settings": [
-      {
-        "type": "select",
-        "id": "cart_type",
-        "label": "Tipo de carrinho",
-        "options": [
-          { "value": "drawer", "label": "Drawer lateral" },
-          { "value": "page", "label": "Página dedicada" }
-        ],
-        "default": "drawer"
-      },
-      {
-        "type": "checkbox",
-        "id": "cart_show_free_shipping",
-        "label": "Mostrar barra de progresso frete grátis",
-        "default": true
-      },
-      {
-        "type": "number",
-        "id": "cart_free_shipping_threshold",
-        "label": "Valor mínimo para frete grátis (em centavos)",
-        "default": 19900,
-        "info": "Ex: 19900 = R$199,00. Usar centavos para compatibilidade com Liquid {{ money }}"
-      }
-    ]
-  },
-  {
-    "name": "Busca",
-    "settings": [
-      {
-        "type": "checkbox",
-        "id": "enable_predictive_search",
-        "label": "Ativar busca preditiva (autocomplete)",
-        "default": true
-      },
-      {
-        "type": "number",
-        "id": "search_results_limit",
-        "label": "Número de resultados na busca rápida",
-        "default": 4
-      }
-    ]
-  },
-  {
-    "name": "Redes Sociais",
-    "settings": [
-      {
-        "type": "header",
-        "content": "Links das redes"
+        "content": "Cuentas de redes sociales"
       },
       {
         "type": "url",
-        "id": "social_instagram",
+        "id": "social_instagram_link",
         "label": "Instagram"
       },
       {
         "type": "url",
-        "id": "social_facebook",
-        "label": "Facebook"
-      },
-      {
-        "type": "url",
-        "id": "social_tiktok",
+        "id": "social_tiktok_link",
         "label": "TikTok"
       },
       {
         "type": "url",
-        "id": "social_youtube",
+        "id": "social_facebook_link",
+        "label": "Facebook"
+      },
+      {
+        "type": "url",
+        "id": "social_youtube_link",
         "label": "YouTube"
       },
       {
         "type": "url",
-        "id": "social_whatsapp",
-        "label": "WhatsApp (link wa.me)"
-      },
-      {
-        "type": "url",
-        "id": "social_pinterest",
-        "label": "Pinterest"
+        "id": "social_twitter_link",
+        "label": "X (Twitter)"
       }
     ]
   },
@@ -343,8 +162,57 @@
       {
         "type": "image_picker",
         "id": "favicon",
-        "label": "Favicon",
-        "info": "Recomendado: 32×32px, formato PNG ou ICO"
+        "label": "Imagen del favicon",
+        "info": "Se recomienda 32x32 px en formato PNG"
+      }
+    ]
+  },
+  {
+    "name": "Barra de Promoción",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "promo_bar_enabled",
+        "label": "Mostrar barra de promoción",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "promo_bar_text",
+        "label": "Texto de la promoción",
+        "default": "🔥 Envío GRATIS en pedidos +$69 | Oferta por tiempo limitado"
+      },
+      {
+        "type": "color",
+        "id": "promo_bar_bg",
+        "label": "Color de fondo",
+        "default": "#1A1A1A"
+      },
+      {
+        "type": "color",
+        "id": "promo_bar_text_color",
+        "label": "Color del texto",
+        "default": "#ffffff"
+      }
+    ]
+  },
+  {
+    "name": "Carrito",
+    "settings": [
+      {
+        "type": "select",
+        "id": "cart_type",
+        "label": "Tipo de carrito",
+        "options": [
+          { "value": "drawer", "label": "Panel lateral (Drawer)" },
+          { "value": "page", "label": "Página completa" }
+        ],
+        "default": "drawer"
+      },
+      {
+        "type": "product",
+        "id": "sticky_cart_product",
+        "label": "Producto para el sticky add-to-cart (móvil)"
       }
     ]
   }

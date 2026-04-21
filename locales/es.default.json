@@ -1,0 +1,90 @@
+{
+  "general": {
+    "search": "Buscar",
+    "no_results": "No se encontraron resultados",
+    "pagination": {
+      "previous": "Anterior",
+      "next": "Siguiente"
+    },
+    "404": {
+      "title": "Página no encontrada",
+      "subtext": "La página que buscas no existe o fue movida.",
+      "button": "Volver al inicio"
+    },
+    "breadcrumbs": {
+      "home": "Inicio"
+    },
+    "newsletter": {
+      "label": "Tu correo electrónico",
+      "button": "Suscribirse",
+      "success": "¡Gracias por suscribirte!"
+    }
+  },
+  "header": {
+    "home": "Inicio",
+    "about": "Nosotros",
+    "contact": "Contacto",
+    "cart": "Carrito",
+    "menu": "Menú",
+    "close": "Cerrar"
+  },
+  "products": {
+    "product": {
+      "add_to_cart": "Agregar al carrito",
+      "buy_now": "Comprar ahora",
+      "sold_out": "Agotado",
+      "on_sale": "Oferta",
+      "quantity": "Cantidad",
+      "description": "Descripción",
+      "price": "Precio",
+      "compare_at_price": "Precio anterior",
+      "select_option": "Seleccionar opción",
+      "unavailable": "No disponible"
+    }
+  },
+  "collections": {
+    "title": "Colecciones",
+    "all": "Todos los productos",
+    "no_products": "No hay productos en esta colección."
+  },
+  "cart": {
+    "title": "Tu carrito",
+    "empty": "Tu carrito está vacío",
+    "continue_shopping": "Seguir comprando",
+    "subtotal": "Subtotal",
+    "checkout": "Finalizar compra",
+    "remove": "Eliminar",
+    "quantity": "Cantidad",
+    "shipping_note": "Impuestos y envío calculados en el checkout",
+    "update": "Actualizar"
+  },
+  "contact": {
+    "title": "Contáctanos",
+    "name": "Nombre",
+    "email": "Correo electrónico",
+    "phone": "Teléfono",
+    "message": "Mensaje",
+    "send": "Enviar mensaje",
+    "success": "¡Gracias! Nos pondremos en contacto contigo pronto."
+  },
+  "footer": {
+    "support": "Soporte",
+    "help_center": "Centro de ayuda",
+    "track_order": "Rastrear pedido",
+    "contact": "Contacto",
+    "legal": "Legal",
+    "privacy_policy": "Políticas de privacidad",
+    "terms_of_service": "Términos de servicio",
+    "refund_policy": "Política de devolución",
+    "newsletter_title": "Únete a nuestro club",
+    "follow_us": "Síguenos",
+    "copyright": "Todos los derechos reservados",
+    "secure_payments": "Formas de pago seguras"
+  },
+  "accessibility": {
+    "skip_to_content": "Ir al contenido",
+    "close": "Cerrar",
+    "open_cart": "Abrir carrito",
+    "loading": "Cargando..."
+  }
+}

@@ -1,112 +1,93 @@
-<section class="w-full mx-auto px-6 md:px-12 xl:px-24 py-20 pb-32">
-  <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-    
-    <div class="order-1 lg:order-1 w-full rounded-[2.5rem] lg:rounded-[3rem] overflow-hidden shadow-2xl h-[500px] lg:h-[700px]">
-      {%- if section.settings.image != blank -%}
-        {{ section.settings.image | image_url: width: 1200 | image_tag: 
-           class: 'w-full h-full object-cover hover:scale-105 transition-transform duration-[1.5s] ease-out',
-           loading: 'lazy'
-        }}
-      {%- else -%}
-        <div class="w-full h-full bg-muted flex items-center justify-center">
-          {{ 'image' | placeholder_svg_tag: 'w-32 h-32 text-border' }}
-        </div>
-      {%- endif -%}
+<section class="w-full mx-auto py-20 px-6 md:px-12 xl:px-24">
+  <div class="max-w-5xl mx-auto">
+    <div class="text-center mb-14">
+      <h2 class="text-4xl md:text-[3.5rem] font-medium tracking-tight text-foreground leading-[1.1]">
+        {{ section.settings.heading | default: '¿Por qué Vitality?' }}
+      </h2>
     </div>
 
-    <div class="order-2 lg:order-2">
-      {%- if section.settings.heading != blank -%}
-        <h2 class="text-4xl md:text-[3.5rem] font-medium tracking-tight leading-[1.1] mb-12 text-foreground">
-          {{ section.settings.heading | newline_to_br | replace: 'costas saudáveis', '<span class="text-primary italic">costas saudáveis</span>' }}
-        </h2>
-      {%- endif -%}
-      
-      <div class="flex flex-col gap-4">
-        {%- for block in section.blocks -%}
-          <details name="features" class="group bg-card rounded-2xl border border-border/60 shadow-sm overflow-hidden" {% if forloop.first %}open{% endif %} {{ block.shopify_attributes }}>
-            <summary class="flex justify-between items-center font-medium cursor-pointer list-none py-5 px-6 hover:text-primary transition-colors text-[1.3rem] text-foreground">
-              <span>{{ block.settings.title }}</span>
-              <span class="transition-transform duration-300 group-open:rotate-180 text-primary">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+    <div class="space-y-0 divide-y divide-border/50">
+      {%- for block in section.blocks -%}
+        <details class="group py-6 md:py-8 cursor-pointer" {{ block.shopify_attributes }}{% if forloop.first %} open{% endif %}>
+          <summary class="flex items-center justify-between gap-4 list-none font-medium text-foreground text-lg md:text-xl hover:text-primary transition-colors">
+            <div class="flex items-center gap-4">
+              <span class="w-10 h-10 rounded-full bg-foreground/5 flex items-center justify-center text-sm font-semibold text-muted-foreground shrink-0">
+                {{ forloop.index | prepend: '0' | slice: -2, 2 }}
               </span>
-            </summary>
-            <div class="text-muted-foreground px-6 pb-5 leading-relaxed font-sans text-base">
-              {{ block.settings.text }}
+              {{ block.settings.title }}
             </div>
-          </details>
-        {%- endfor -%}
-      </div>
+            <svg class="w-5 h-5 shrink-0 text-muted-foreground group-open:rotate-45 transition-transform duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"></path></svg>
+          </summary>
+          <div class="pl-14 pr-8 pt-4 pb-2 text-muted-foreground leading-relaxed font-sans">
+            {{ block.settings.text }}
+          </div>
+        </details>
+      {%- endfor -%}
     </div>
-    
   </div>
 </section>
 
 {% schema %}
 {
-  "name": "Features Accordion",
+  "name": "Beneficios Acordeón",
   "settings": [
     {
-      "type": "image_picker",
-      "id": "image",
-      "label": "Section Image"
-    },
-    {
-      "type": "textarea",
+      "type": "text",
       "id": "heading",
-      "label": "Heading",
-      "default": "Alinhe sua coluna e elimine o cansaço para umas \n costas saudáveis"
+      "label": "Título",
+      "default": "¿Por qué Vitality?"
     }
   ],
   "blocks": [
     {
       "type": "feature",
-      "name": "Feature",
+      "name": "Beneficio",
       "settings": [
         {
           "type": "text",
           "id": "title",
-          "label": "Title",
-          "default": "Benefício da funcionalidade"
+          "label": "Título",
+          "default": "Beneficio de la funcionalidad"
         },
         {
           "type": "richtext",
           "id": "text",
-          "label": "Description",
-          "default": "<p>Descrição completa do que esse recurso faz.</p>"
+          "label": "Descripción",
+          "default": "<p>Descripción completa de lo que hace este recurso.</p>"
         }
       ]
     }
   ],
   "presets": [
     {
-      "name": "Features Accordion",
+      "name": "Beneficios Acordeón",
       "blocks": [
         {
           "type": "feature",
           "settings": {
-            "title": "Alívio Imediato da Dor",
-            "text": "<p>Nosso corretor libera a tensão acumulada nas costas e pescoço, proporcionando alívio quase instantâneo ao realinhar sua coluna ao estado natural.</p>"
+            "title": "Corrección postural progresiva",
+            "text": "<p>Vitality entrena tu espalda de forma gradual, fortaleciendo los músculos responsables de mantener la columna alineada. A diferencia de corsés rígidos, promueve memoria muscular para resultados duraderos.</p>"
           }
         },
         {
           "type": "feature",
           "settings": {
-            "title": "Alinhamento Ativo da Coluna",
-            "text": "<p>Memória muscular treinada. O uso diário treina seu corpo para manter automaticamente uma postura reta.</p>"
+            "title": "Alivio del dolor cervical en 14 días",
+            "text": "<p>La tensión cervical y lumbar disminuye progresivamente desde los primeros días. Estudios muestran que el uso diario de 2h redistribuye la presión intervertebral y alivia contracturas crónicas.</p>"
           }
         },
         {
           "type": "feature",
           "settings": {
-            "title": "Invisibilidade sob a Roupa",
-            "text": "<p>Tecido de microporos respirável e design ultrafino que o torna absolutamente imperceptível sob qualquer camisa, blusa ou suéter.</p>"
+            "title": "100% invisible bajo la ropa",
+            "text": "<p>El diseño ultra delgado (0.3cm) y el tejido transpirable hacen que Vitality sea indetectable bajo camisas, camisetas o blusas. Úsalo en la oficina, gym o vida diaria sin que nadie lo note.</p>"
           }
         },
         {
           "type": "feature",
           "settings": {
-            "title": "Ajuste Ergonômico Universal",
-            "text": "<p>Alças de alta tecnologia que se ajustam suavemente sem apertar as axilas, garantindo horas contínuas de conforto sem atrito.</p>"
+            "title": "Talla universal + garantía de 30 días",
+            "text": "<p>Sistema de ajuste con velcro que se adapta desde la talla XS hasta XXL. Si en 30 días no notas mejora, te devolvemos el 100% de tu dinero. Sin preguntas.</p>"
           }
         }
       ]

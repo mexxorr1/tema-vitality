@@ -1,3 +1,29 @@
 {
-  "current": "Default"
+  "current": {
+    "color_primary": "#000000",
+    "color_secondary": "#ffffff",
+    "color_accent": "#FF3300",
+    "color_text": "#1A1A1A",
+    "color_background": "#ffffff",
+    "color_background_secondary": "#F5F5F5",
+    "font_size_scale": 100,
+    "layout_style": "wide",
+    "section_spacing": 36,
+    "border_radius": 16,
+    "promo_bar_enabled": true,
+    "promo_bar_text": "🔥 Envío GRATIS en pedidos +$69 | Oferta por tiempo limitado",
+    "promo_bar_bg": "#1A1A1A",
+    "promo_bar_text_color": "#ffffff",
+    "cart_type": "drawer",
+    "sections": {
+      "header": {
+        "type": "header",
+        "settings": {}
+      },
+      "footer": {
+        "type": "footer",
+        "settings": {}
+      }
+    }
+  }
 }

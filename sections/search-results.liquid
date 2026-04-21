@@ -1,0 +1,46 @@
+<section class="w-full mx-auto py-20 px-6 md:px-12 xl:px-24 min-h-[60vh]">
+  <div class="max-w-4xl mx-auto">
+    <h1 class="text-4xl md:text-5xl font-medium tracking-tight text-foreground leading-[1.1] mb-10">
+      {{ 'general.search' | t }}
+    </h1>
+
+    <form action="{{ routes.search_url }}" method="get" class="mb-12">
+      <div class="flex gap-3">
+        <input type="search" name="q" value="{{ search.terms | escape }}" placeholder="{{ 'general.search' | t }}..." class="flex-1 bg-muted/50 border border-border/50 rounded-full px-6 py-4 text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/30 font-sans">
+        <button type="submit" class="px-8 py-4 bg-primary text-primary-foreground rounded-full font-semibold hover:brightness-110 active:scale-95 transition-all">
+          {{ 'general.search' | t }}
+        </button>
+      </div>
+    </form>
+
+    {%- if search.performed -%}
+      {%- if search.results_count > 0 -%}
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+          {%- for item in search.results -%}
+            <a href="{{ item.url }}" class="group block">
+              {%- if item.featured_image -%}
+                <div class="bg-card rounded-2xl overflow-hidden aspect-square mb-3 border border-border/50">
+                  <img src="{{ item.featured_image | image_url: width: 400 }}" alt="{{ item.title | escape }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+                </div>
+              {%- endif -%}
+              <h3 class="font-medium text-foreground text-sm">{{ item.title }}</h3>
+              {%- if item.price -%}
+                <span class="text-muted-foreground text-sm font-sans">{{ item.price | money }}</span>
+              {%- endif -%}
+            </a>
+          {%- endfor -%}
+        </div>
+      {%- else -%}
+        <p class="text-muted-foreground font-sans text-lg text-center py-20">{{ 'general.no_results' | t }}</p>
+      {%- endif -%}
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Resultados de Búsqueda",
+  "settings": [],
+  "presets": [{ "name": "Resultados de Búsqueda" }]
+}
+{% endschema %}

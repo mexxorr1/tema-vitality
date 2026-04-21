@@ -1,141 +1,156 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
     "hero": {
       "type": "hero-banner",
       "settings": {
-        "social_proof_text": "+15,400 costas aliviadas",
-        "heading": "Acorde sem dor.\nCorrija sua postura.",
-        "subheading": "<p>El corrector inteligente que entrena tu espalda, alivia la tensión cervical en 14 días y es 100% invisible sob sua roupa.</p>",
-        "button_text": "Obter 33% de Desconto",
+        "social_proof_text": "+15,400 espaldas aliviadas",
+        "heading": "Despierta sin dolor.\nCorrige tu postura.",
+        "subheading": "<p>El corrector inteligente que entrena tu espalda, alivia la tensión cervical en 14 días y es 100% invisible bajo tu ropa.</p>",
+        "button_text": "Obtener 33% de Descuento",
         "button_link": "",
-        "delivery_text": "Pagamento na entrega disponível"
+        "delivery_text": "Pago contra entrega disponible"
       }
     },
     "best_sellers": {
       "type": "best-sellers",
       "settings": {
-        "heading": "Os mais vendidos",
+        "heading": "Los más vendidos",
         "collection": "mas-vendidos",
         "products_to_show": 4
       }
     },
     "features": {
       "type": "features-accordion",
+      "settings": {
+        "heading": "¿Por qué Vitality?"
+      },
       "blocks": {
-        "feature_cpFTrp": {
+        "feature_1": {
           "type": "feature",
           "settings": {
-            "title": "Benefício da funcionalidade",
-            "text": "<p>Descrição completa do que esse recurso faz.</p>"
+            "title": "Corrección postural progresiva",
+            "text": "<p>Vitality entrena tu espalda de forma gradual, fortaleciendo los músculos responsables de mantener la columna alineada. A diferencia de corsés rígidos, promueve memoria muscular para resultados duraderos.</p>"
           }
         },
-        "feature_EbkKyE": {
+        "feature_2": {
           "type": "feature",
           "settings": {
-            "title": "Benefício da funcionalidade",
-            "text": "<p>Descrição completa do que esse recurso faz.</p>"
+            "title": "Alivio del dolor cervical en 14 días",
+            "text": "<p>La tensión cervical y lumbar disminuye progresivamente desde los primeros días. Estudios muestran que el uso diario de 2h redistribuye la presión intervertebral y alivia contracturas crónicas.</p>"
           }
         },
-        "feature_FDVWgz": {
+        "feature_3": {
           "type": "feature",
           "settings": {
-            "title": "Benefício da funcionalidade",
-            "text": "<p>Descrição completa do que esse recurso faz.</p>"
+            "title": "100% invisible bajo la ropa",
+            "text": "<p>El diseño ultra delgado (0.3cm) y el tejido transpirable hacen que Vitality sea indetectable bajo camisas, camisetas o blusas. Úsalo en la oficina, gym o vida diaria sin que nadie lo note.</p>"
           }
         },
-        "feature_myw7kf": {
+        "feature_4": {
           "type": "feature",
           "settings": {
-            "title": "Benefício da funcionalidade",
-            "text": "<p>Descrição completa do que esse recurso faz.</p>"
+            "title": "Talla universal + garantía de 30 días",
+            "text": "<p>Sistema de ajuste con velcro que se adapta desde la talla XS hasta XXL. Si en 30 días no notas mejora, te devolvemos el 100% de tu dinero. Sin preguntas.</p>"
           }
         }
       },
-      "block_order": [
-        "feature_cpFTrp",
-        "feature_EbkKyE",
-        "feature_FDVWgz",
-        "feature_myw7kf"
-      ],
-      "settings": {
-        "image": "shopify://shop_images/Crie_uma_imagem_202604181502.jpg",
-        "heading": "Alinhe sua coluna e elimine o cansaço para umas \n costas saudáveis"
-      }
+      "block_order": ["feature_1","feature_2","feature_3","feature_4"]
     },
     "testimonials": {
       "type": "testimonials-carousel",
+      "settings": {
+        "heading": "Resultados Reales de Nuestros Clientes"
+      },
       "blocks": {
-        "review_7DU7tW": {
+        "review_1": {
           "type": "review",
           "settings": {
-            "review_text": "Review maravilhoso sobre o produto.",
+            "review_text": "Después de 2 semanas, el dolor de espalda desapareció. Lo uso todos los días en la oficina y nadie lo nota.",
             "rating": 5,
-            "author": "Nome C.",
-            "product_mentioned": "Corretor de Postura"
+            "author": "María L.",
+            "product_mentioned": "Corrector de Postura"
           }
         },
-        "review_NKHAjC": {
+        "review_2": {
           "type": "review",
           "settings": {
-            "review_text": "Review maravilhoso sobre o produto.",
+            "review_text": "Al principio era escéptico, pero los resultados hablan por sí solos. Mi postura mejoró visiblemente en 10 días.",
             "rating": 5,
-            "author": "Nome C.",
-            "product_mentioned": "Corretor de Postura"
+            "author": "Carlos R.",
+            "product_mentioned": "Pack Pareja"
           }
         },
-        "review_X8JaD9": {
+        "review_3": {
           "type": "review",
           "settings": {
-            "review_text": "Review maravilhoso sobre o produto.",
+            "review_text": "Lo compré para toda la familia. Mis hijos que estudian muchas horas ya no se quejan de dolor cervical.",
             "rating": 5,
-            "author": "Nome C.",
-            "product_mentioned": "Corretor de Postura"
-          }
-        },
-        "review_ViU7jL": {
-          "type": "review",
-          "settings": {
-            "review_text": "Review maravilhoso sobre o produto.",
-            "rating": 5,
-            "author": "Nome C.",
-            "product_mentioned": "Corretor de Postura"
+            "author": "Ana G.",
+            "product_mentioned": "Pack Familia"
           }
         }
       },
-      "block_order": [
-        "review_7DU7tW",
-        "review_NKHAjC",
-        "review_X8JaD9",
-        "review_ViU7jL"
-      ],
-      "settings": {
-        "heading": "Resultados Reais dos Nossos Clientes"
-      }
+      "block_order": ["review_1","review_2","review_3"]
     },
-    "bundle": {
+    "bundle_pricing": {
       "type": "bundle-pricing",
       "settings": {
-        "heading": "Escolha seu Pacote Ideal",
-        "subheading": "Aproveite nossos descontos por volume. As ofertas desta página expiram em breve."
-      }
+        "heading": "Elige tu pack",
+        "subheading": "Más unidades = Mayor descuento"
+      },
+      "blocks": {
+        "plan_1": {
+          "type": "pricing_card",
+          "settings": {
+            "title": "Básico",
+            "description": "1 corrector de postura",
+            "price": "$49.90",
+            "compare_price": "$79.90",
+            "unit_price": "$49.90 /ud",
+            "badge": "",
+            "featured": false,
+            "benefits": "Envío gratuito|Corrección postural progresiva|Soporte por WhatsApp",
+            "button_text": "Comprar ahora"
+          }
+        },
+        "plan_2": {
+          "type": "pricing_card",
+          "settings": {
+            "title": "Pareja",
+            "description": "2 correctores de postura",
+            "price": "$79.90",
+            "compare_price": "$159.80",
+            "unit_price": "$39.95 /ud",
+            "badge": "Más vendido",
+            "featured": true,
+            "benefits": "Envío gratuito|Corrección postural progresiva|Soporte por WhatsApp|Guía de ejercicios PDF|50% de descuento",
+            "button_text": "Comprar ahora — 50% OFF"
+          }
+        },
+        "plan_3": {
+          "type": "pricing_card",
+          "settings": {
+            "title": "Familia",
+            "description": "3 correctores de postura",
+            "price": "$99.90",
+            "compare_price": "$239.70",
+            "unit_price": "$33.30 /ud",
+            "badge": "Mayor ahorro",
+            "featured": false,
+            "benefits": "Envío gratuito|Corrección postural progresiva|Soporte por WhatsApp|Guía de ejercicios PDF|58% de descuento|Banda de resistencia gratis",
+            "button_text": "Comprar ahora — 58% OFF"
+          }
+        }
+      },
+      "block_order": ["plan_1","plan_2","plan_3"]
     },
     "cta": {
       "type": "cta-banner",
       "settings": {
-        "heading": "Experimente hoje, sinta-se melhor amanhã.",
-        "text": "<p>Junte-se a milhares de pessoas que já transformaram suas vidas com uma postura corrigida e livre de dores.</p>",
-        "button_text": "Melhorar minha postura agora",
-        "button_link": "",
-        "guarantee_text": "Garantia incondicional de 30 dias."
+        "heading": "Transforma tu postura hoy",
+        "description": "Únete a miles de personas que ya recuperaron su bienestar con Vitality. Resultados visibles o te devolvemos tu dinero.",
+        "button_text": "Comprar ahora con descuento",
+        "rating_text": "4.9 — desde +15,400 reseñas"
       }
     }
   },
@@ -144,7 +159,7 @@
     "best_sellers",
     "features",
     "testimonials",
-    "bundle",
+    "bundle_pricing",
     "cta"
   ]
 }

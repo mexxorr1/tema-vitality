@@ -1,0 +1,90 @@
+{
+  "general": {
+    "search": "Search",
+    "no_results": "No results found",
+    "pagination": {
+      "previous": "Previous",
+      "next": "Next"
+    },
+    "404": {
+      "title": "Page not found",
+      "subtext": "The page you are looking for does not exist or has been moved.",
+      "button": "Back to home"
+    },
+    "breadcrumbs": {
+      "home": "Home"
+    },
+    "newsletter": {
+      "label": "Your email address",
+      "button": "Subscribe",
+      "success": "Thanks for subscribing!"
+    }
+  },
+  "header": {
+    "home": "Home",
+    "about": "About",
+    "contact": "Contact",
+    "cart": "Cart",
+    "menu": "Menu",
+    "close": "Close"
+  },
+  "products": {
+    "product": {
+      "add_to_cart": "Add to cart",
+      "buy_now": "Buy now",
+      "sold_out": "Sold out",
+      "on_sale": "Sale",
+      "quantity": "Quantity",
+      "description": "Description",
+      "price": "Price",
+      "compare_at_price": "Compare at price",
+      "select_option": "Select option",
+      "unavailable": "Unavailable"
+    }
+  },
+  "collections": {
+    "title": "Collections",
+    "all": "All products",
+    "no_products": "No products in this collection."
+  },
+  "cart": {
+    "title": "Your cart",
+    "empty": "Your cart is empty",
+    "continue_shopping": "Continue shopping",
+    "subtotal": "Subtotal",
+    "checkout": "Checkout",
+    "remove": "Remove",
+    "quantity": "Quantity",
+    "shipping_note": "Shipping and taxes calculated at checkout",
+    "update": "Update"
+  },
+  "contact": {
+    "title": "Contact us",
+    "name": "Name",
+    "email": "Email",
+    "phone": "Phone",
+    "message": "Message",
+    "send": "Send message",
+    "success": "Thanks! We'll get back to you soon."
+  },
+  "footer": {
+    "support": "Support",
+    "help_center": "Help Center",
+    "track_order": "Track Order",
+    "contact": "Contact",
+    "legal": "Legal",
+    "privacy_policy": "Privacy Policy",
+    "terms_of_service": "Terms of Service",
+    "refund_policy": "Refund Policy",
+    "newsletter_title": "Join our club",
+    "follow_us": "Follow us",
+    "copyright": "All rights reserved",
+    "secure_payments": "Secure payment methods"
+  },
+  "accessibility": {
+    "skip_to_content": "Skip to content",
+    "close": "Close",
+    "open_cart": "Open cart",
+    "loading": "Loading..."
+  }
+}

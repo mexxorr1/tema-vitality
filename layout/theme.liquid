@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="">
+  <meta name="theme-color" content="{{ settings.color_primary }}">
   <link rel="canonical" href="{{ canonical_url }}">
 
   {%- if settings.favicon != blank -%}
@@ -13,14 +13,21 @@
 
   <title>
     {{ page_title }}
-    {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
-    {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
+    {%- if current_tags %} &ndash; {{ current_tags | join: ', ' }}{% endif -%}
+    {%- if current_page != 1 %} &ndash; {{ current_page }}{% endif -%}
     {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
   </title>
 
   {% if page_description %}
     <meta name="description" content="{{ page_description | escape }}">
   {% endif %}
+
+  <!-- Open Graph -->
+  <meta property="og:site_name" content="{{ shop.name }}">
+  <meta property="og:title" content="{{ page_title }}">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="{{ canonical_url }}">
+  {% if page_description %}<meta property="og:description" content="{{ page_description | escape }}">{% endif %}
 
   {{ content_for_header }}
 
@@ -30,11 +37,30 @@
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" crossorigin>
   
   {{ 'theme.css' | asset_url | stylesheet_tag: preload: true }}
-
-
   {{ 'base.css' | asset_url | stylesheet_tag }}
+
+  <style>
+    :root {
+      --color-primary: {{ settings.color_primary }};
+      --color-secondary: {{ settings.color_secondary }};
+      --color-accent: {{ settings.color_accent }};
+      --color-text: {{ settings.color_text }};
+      --color-background: {{ settings.color_background }};
+      --color-background-secondary: {{ settings.color_background_secondary }};
+    }
+  </style>
 </head>
 <body class="bg-background text-foreground overflow-x-hidden selection:bg-primary/20 selection:text-foreground">
+
+  <a class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[999] focus:bg-primary focus:text-primary-foreground focus:px-4 focus:py-2 focus:rounded-full" href="#MainContent">
+    {{ 'accessibility.skip_to_content' | t }}
+  </a>
+
+  {%- if settings.promo_bar_enabled -%}
+    <div class="w-full text-center py-2.5 px-4 text-xs font-semibold tracking-wide" style="background: {{ settings.promo_bar_bg }}; color: {{ settings.promo_bar_text_color }};">
+      {{ settings.promo_bar_text }}
+    </div>
+  {%- endif -%}
 
   {% section 'header' %}
 
@@ -44,9 +70,37 @@
 
   {% section 'footer' %}
 
+  <!-- Cart Drawer -->
+  {% render 'cart-drawer' %}
+
   <!-- Sticky Add To Cart (Mobile CRO) -->
   {%- assign main_product = all_products[settings.sticky_cart_product] | default: collections.all.products.first -%}
   {% render 'sticky-cart', product: main_product %}
+
+  <script>
+    // Cart Drawer Toggle
+    document.addEventListener('DOMContentLoaded', function() {
+      const cartOpenBtns = document.querySelectorAll('[data-cart-open]');
+      const cartCloseBtns = document.querySelectorAll('[data-cart-close]');
+      const cartDrawer = document.getElementById('cart-drawer');
+      const cartOverlay = document.getElementById('cart-overlay');
+      
+      function openCart() {
+        if (cartDrawer) { cartDrawer.classList.remove('translate-x-full'); cartDrawer.classList.add('translate-x-0'); }
+        if (cartOverlay) { cartOverlay.classList.remove('opacity-0','pointer-events-none'); cartOverlay.classList.add('opacity-100'); }
+        document.body.style.overflow = 'hidden';
+      }
+      function closeCart() {
+        if (cartDrawer) { cartDrawer.classList.add('translate-x-full'); cartDrawer.classList.remove('translate-x-0'); }
+        if (cartOverlay) { cartOverlay.classList.add('opacity-0','pointer-events-none'); cartOverlay.classList.remove('opacity-100'); }
+        document.body.style.overflow = '';
+      }
+      
+      cartOpenBtns.forEach(btn => btn.addEventListener('click', function(e) { e.preventDefault(); openCart(); }));
+      cartCloseBtns.forEach(btn => btn.addEventListener('click', closeCart));
+      if (cartOverlay) cartOverlay.addEventListener('click', closeCart);
+    });
+  </script>
 
 </body>
 </html>

@@ -1,17 +1,17 @@
 <section class="w-full mx-auto mb-20 px-6 md:px-12 xl:px-24 overflow-hidden relative" data-carousel>
   <div class="text-center mb-14">
     <h2 class="text-4xl md:text-[3.5rem] font-medium tracking-tight text-foreground leading-[1.1]">
-      {{ section.settings.heading | replace: 'Nossos Clientes', '<span class="text-primary italic">Nossos Clientes</span>' }}
+      {{ section.settings.heading | replace: 'Nuestros Clientes', '<span class="text-primary italic">Nuestros Clientes</span>' }}
     </h2>
   </div>
 
   <div class="relative max-w-[1400px] mx-auto group/carousel">
     
-    <button id="car-prev-{{ section.id }}" class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-6 z-10 w-14 h-14 bg-background/90 backdrop-blur-md rounded-full border border-border shadow-lg flex items-center justify-center text-foreground hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all opacity-0 invisible group-hover/carousel:opacity-100 group-hover/carousel:visible focus:outline-none">
+    <button id="car-prev-{{ section.id }}" class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-6 z-10 w-14 h-14 bg-background/90 backdrop-blur-md rounded-full border border-border shadow-lg flex items-center justify-center text-foreground hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all opacity-0 invisible group-hover/carousel:opacity-100 group-hover/carousel:visible focus:outline-none" aria-label="{{ 'general.pagination.previous' | t }}">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
     </button>
 
-    <button id="car-next-{{ section.id }}" class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-6 z-10 w-14 h-14 bg-background/90 backdrop-blur-md rounded-full border border-border shadow-lg flex items-center justify-center text-foreground hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all opacity-0 invisible group-hover/carousel:opacity-100 group-hover/carousel:visible focus:outline-none">
+    <button id="car-next-{{ section.id }}" class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-6 z-10 w-14 h-14 bg-background/90 backdrop-blur-md rounded-full border border-border shadow-lg flex items-center justify-center text-foreground hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all opacity-0 invisible group-hover/carousel:opacity-100 group-hover/carousel:visible focus:outline-none" aria-label="{{ 'general.pagination.next' | t }}">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
     </button>
 
@@ -49,42 +49,38 @@ document.addEventListener('DOMContentLoaded', function() {
   const nextBtn = document.getElementById('car-next-{{ section.id }}');
   
   if (track && prevBtn && nextBtn) {
-    prevBtn.addEventListener('click', () => {
-      track.scrollBy({ left: -420, behavior: 'smooth' });
-    });
-    nextBtn.addEventListener('click', () => {
-      track.scrollBy({ left: 420, behavior: 'smooth' });
-    });
+    prevBtn.addEventListener('click', () => { track.scrollBy({ left: -420, behavior: 'smooth' }); });
+    nextBtn.addEventListener('click', () => { track.scrollBy({ left: 420, behavior: 'smooth' }); });
   }
 });
 </script>
 
 {% schema %}
 {
-  "name": "Testimonials",
+  "name": "Testimonios",
   "settings": [
     {
       "type": "text",
       "id": "heading",
-      "label": "Heading",
-      "default": "Resultados Reais dos Nossos Clientes"
+      "label": "Título",
+      "default": "Resultados Reales de Nuestros Clientes"
     }
   ],
   "blocks": [
     {
       "type": "review",
-      "name": "Review",
+      "name": "Reseña",
       "settings": [
         {
           "type": "textarea",
           "id": "review_text",
-          "label": "Review Text",
-          "default": "Review maravilhoso sobre o produto."
+          "label": "Texto de la reseña",
+          "default": "Reseña maravillosa sobre el producto."
         },
         {
           "type": "range",
           "id": "rating",
-          "label": "Rating",
+          "label": "Puntuación",
           "min": 1,
           "max": 5,
           "step": 1,
@@ -93,25 +89,34 @@ document.addEventListener('DOMContentLoaded', function() {
         {
           "type": "text",
           "id": "author",
-          "label": "Author",
-          "default": "Nome C."
+          "label": "Autor",
+          "default": "Nombre C."
         },
         {
           "type": "text",
           "id": "product_mentioned",
-          "label": "Product string",
-          "default": "Corretor de Postura"
+          "label": "Producto mencionado",
+          "default": "Corrector de Postura"
         }
       ]
     }
   ],
   "presets": [
     {
-      "name": "Testimonials Carousel",
+      "name": "Carrusel de Testimonios",
       "blocks": [
-        {"type": "review"},
-        {"type": "review"},
-        {"type": "review"}
+        {
+          "type": "review",
+          "settings": { "review_text": "Después de 2 semanas, el dolor de espalda desapareció. Lo uso todos los días en la oficina y nadie lo nota.", "rating": 5, "author": "María L.", "product_mentioned": "Corrector de Postura" }
+        },
+        {
+          "type": "review",
+          "settings": { "review_text": "Al principio era escéptico, pero los resultados hablan por sí solos. Mi postura mejoró visiblemente en 10 días.", "rating": 5, "author": "Carlos R.", "product_mentioned": "Pack Pareja" }
+        },
+        {
+          "type": "review",
+          "settings": { "review_text": "Lo compré para toda la familia. Mis hijos que estudian muchas horas ya no se quejan de dolor cervical.", "rating": 5, "author": "Ana G.", "product_mentioned": "Pack Familia" }
+        }
       ]
     }
   ]

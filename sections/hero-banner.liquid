@@ -1,69 +1,49 @@
-<section class="relative pt-36 pb-20 md:pt-48 md:pb-40 overflow-hidden flex flex-col justify-center text-left px-6 md:px-12 xl:px-24 min-h-[90vh]">
-  {%- if section.settings.video != blank -%}
-    {{ section.settings.video | video_tag: autoplay: true, loop: true, muted: true, controls: false, class: 'absolute inset-0 w-full h-full object-cover z-0 pointer-events-none' }}
-  {%- elsif section.settings.video_url != blank -%}
-    <video autoplay loop muted playsinline
-           class="absolute inset-0 w-full h-full object-cover z-0 pointer-events-none">
+<section class="relative w-full min-h-screen flex items-center overflow-hidden">
+  <!-- Background Video / Image -->
+  {%- if section.settings.video_url != blank -%}
+    <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover">
       <source src="{{ section.settings.video_url }}" type="video/mp4">
     </video>
-  {%- elsif section.settings.image != blank -%}
-    {{
-      section.settings.image | image_url: width: 1920 | image_tag: 
-        class: 'absolute inset-0 w-full h-full object-cover z-0 pointer-events-none'
-    }}
+  {%- elsif section.settings.background_image != blank -%}
+    <img src="{{ section.settings.background_image | image_url: width: 1920 }}" alt="" class="absolute inset-0 w-full h-full object-cover" loading="eager">
   {%- else -%}
-    <div class="absolute inset-0 w-full h-full object-cover z-0 bg-muted"></div>
+    <div class="absolute inset-0 bg-gradient-to-br from-background via-muted/30 to-background"></div>
   {%- endif -%}
-  
-  <div class="absolute inset-0 bg-gradient-to-r from-background via-background/90 to-background/20 z-10 w-full md:w-[85%] lg:w-[65%]"></div>
-  <div class="absolute inset-0 bg-background/20 backdrop-blur-[2px] z-[5] w-full"></div>
+  <div class="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent"></div>
 
-  <div class="relative z-20 max-w-2xl lg:max-w-3xl">
-    {%- if section.settings.social_proof_text != blank -%}
-      <div class="mb-8 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-card border border-border shadow-sm">
-        <div class="flex -space-x-2">
-          <div class="w-6 h-6 rounded-full bg-primary/20 border-2 border-background flex items-center justify-center text-primary text-[10px] font-bold">M</div>
-          <div class="w-6 h-6 rounded-full bg-secondary border-2 border-background flex items-center justify-center text-[10px] font-bold text-background mb-0">C</div>
-          <div class="w-6 h-6 rounded-full bg-primary/40 border-2 border-background flex items-center justify-center text-[10px] font-bold text-background mb-0">R</div>
+  <div class="relative z-10 w-full mx-auto px-6 md:px-12 xl:px-24 py-40">
+    <div class="max-w-3xl">
+      {%- if section.settings.social_proof_text != blank -%}
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-foreground/[0.07] border border-border/30 text-sm text-muted-foreground font-sans mb-6 animate-fade-in backdrop-blur-sm">
+          <span class="inline-block w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+          {{ section.settings.social_proof_text }}
         </div>
-        <span class="text-xs font-semibold text-foreground/80 pl-1">{{ section.settings.social_proof_text }}</span>
-      </div>
-    {%- endif -%}
+      {%- endif -%}
 
-    <h1 class="text-5xl sm:text-6xl md:text-[5.5rem] tracking-tight leading-[1.05] font-medium mb-6 text-foreground drop-shadow-sm">
-      Acorde sem <span class="text-primary italic">dor.</span><br/>
-      Corrija sua postura.
-    </h1>
+      <h1 class="text-[clamp(2.5rem,7vw,5rem)] font-medium italic tracking-tight leading-[1.05] text-foreground mb-8">
+        {{ section.settings.heading }}
+      </h1>
+      
+      {%- if section.settings.subheading != blank -%}
+        <div class="text-lg md:text-xl text-muted-foreground font-sans leading-relaxed max-w-xl mb-10">
+          {{ section.settings.subheading }}
+        </div>
+      {%- endif -%}
 
-    <p class="text-lg md:text-xl text-foreground/80 max-w-md mb-10 font-sans">
-      El corrector inteligente que entrena tu espalda, alivia la tensión cervical en 14 días y es
-      <strong class="font-semibold text-foreground">100% invisible</strong> sob sua roupa.
-    </p>
+      {%- if section.settings.button_text != blank -%}
+        <a href="{{ section.settings.button_link | default: routes.root_url }}" class="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-primary text-primary-foreground font-semibold text-lg hover:brightness-110 hover:scale-105 active:scale-95 transition-all shadow-2xl shadow-primary/30">
+          {{ section.settings.button_text }}
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      {%- endif -%}
 
-    <div class="flex flex-col sm:flex-row items-center gap-4">
-      <a href="#los-mas-vendidos"
-         onclick="document.getElementById('los-mas-vendidos').scrollIntoView({behavior:'smooth'}); return false;"
-         class="pulse-button bg-primary text-primary-foreground px-10 py-5 rounded-full font-extrabold hover:brightness-110 active:scale-95 transition-all shadow-2xl hover:shadow-primary/40 flex items-center justify-center gap-3 w-full sm:w-fit text-lg">
-        {{ section.settings.cta_text | default: 'Obter 33% de Desconto' }}
-        <svg fill="currentColor" viewBox="0 0 24 24" class="w-5 h-5">
-          <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/>
-        </svg>
-      </a>
-      <div class="flex items-center gap-2 text-sm font-semibold text-foreground bg-background/80 px-4 py-2 rounded-full border border-border shadow-sm">
-        <span class="relative flex h-3 w-3">
-          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-          <span class="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
-        </span>
-        Estoque Limitado
-      </div>
+      {%- if section.settings.delivery_text != blank -%}
+        <p class="mt-6 text-sm text-muted-foreground/70 font-sans flex items-center gap-2">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          {{ section.settings.delivery_text }}
+        </p>
+      {%- endif -%}
     </div>
-
-    {%- if section.settings.delivery_text != blank -%}
-      <p class="text-sm font-medium text-foreground/60 mt-4 flex items-center gap-2">
-        <svg class="text-primary w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2" ry="2"></rect><line x1="2" y1="10" x2="22" y2="10"></line></svg>
-        {{ section.settings.delivery_text }}
-      </p>
-    {%- endif -%}
   </div>
 </section>
 
@@ -72,38 +52,52 @@
   "name": "Hero Banner",
   "settings": [
     {
-      "type": "video",
-      "id": "video",
-      "label": "Background Video (Shopify hosted)"
-    },
-    {
-      "type": "text",
-      "id": "video_url",
-      "label": "URL do vídeo de fundo (mp4)",
-      "default": ""
-    },
-    {
-      "type": "image_picker",
-      "id": "image",
-      "label": "Background Image (fallback)"
-    },
-    {
       "type": "text",
       "id": "social_proof_text",
-      "label": "Social Proof Text",
-      "default": "+15,400 costas aliviadas"
+      "label": "Texto de prueba social",
+      "default": "+15,400 espaldas aliviadas"
+    },
+    {
+      "type": "textarea",
+      "id": "heading",
+      "label": "Título principal",
+      "default": "Despierta sin dolor.\nCorrige tu postura."
+    },
+    {
+      "type": "richtext",
+      "id": "subheading",
+      "label": "Subtítulo",
+      "default": "<p>El corrector inteligente que entrena tu espalda, alivia la tensión cervical en 14 días y es 100% invisible bajo tu ropa.</p>"
     },
     {
       "type": "text",
-      "id": "cta_text",
-      "label": "CTA Button Text",
-      "default": "Obter 33% de Desconto"
+      "id": "button_text",
+      "label": "Texto del botón",
+      "default": "Obtener 33% de Descuento"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Enlace del botón"
     },
     {
       "type": "text",
       "id": "delivery_text",
-      "label": "Delivery Text",
-      "default": "Pagamento na entrega disponível"
+      "label": "Texto debajo del botón",
+      "default": "Pago contra entrega disponible"
+    },
+    {
+      "type": "video_url",
+      "id": "video_url",
+      "label": "URL del video de fondo",
+      "accept": ["youtube", "vimeo"],
+      "info": "Deja vacío para usar la imagen de fondo"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Imagen de fondo",
+      "info": "Se usa cuando no hay video"
     }
   ],
   "presets": [
