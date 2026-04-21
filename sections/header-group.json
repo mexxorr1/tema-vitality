@@ -1,12 +1,3 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "name": "t:sections.header.name",
   "type": "header",
@@ -17,17 +8,22 @@
         "announcement-bar-0": {
           "type": "announcement",
           "settings": {
-            "text": "🎉 ENVÍO GRATIS en pedidos superiores a $50 | Garantía de 30 días",
+            "text": "⚡ OFERTA HOY: 30% OFF + Envío Gratis — Solo quedan 23 unidades al precio especial",
+            "link": ""
+          }
+        },
+        "announcement-bar-1": {
+          "type": "announcement",
+          "settings": {
+            "text": "✓ Garantía total 30 días · ✓ Pago 100% seguro · ✓ +12.400 clientes satisfechos",
             "link": ""
           }
         }
       },
-      "block_order": [
-        "announcement-bar-0"
-      ],
+      "block_order": ["announcement-bar-0", "announcement-bar-1"],
       "settings": {
-        "auto_rotate": false,
-        "change_slides_speed": 5,
+        "auto_rotate": true,
+        "change_slides_speed": 4,
         "color_scheme": "scheme-4",
         "show_line_separator": false,
         "show_social": false,
@@ -44,19 +40,16 @@
         "menu_type_desktop": "dropdown",
         "sticky_header_type": "on-scroll-up",
         "show_line_separator": true,
-        "color_scheme": "",
-        "menu_color_scheme": "",
-        "enable_country_selector": true,
-        "enable_language_selector": true,
+        "color_scheme": "scheme-1",
+        "menu_color_scheme": "scheme-1",
+        "enable_country_selector": false,
+        "enable_language_selector": false,
         "enable_customer_avatar": false,
         "margin_bottom": 0,
-        "padding_top": 12,
-        "padding_bottom": 12
+        "padding_top": 16,
+        "padding_bottom": 16
       }
     }
   },
-  "order": [
-    "announcement-bar",
-    "header"
-  ]
+  "order": ["announcement-bar", "header"]
 }
